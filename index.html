@@ -1,779 +1,695 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>تیپ‌های شخصیتی زی‌نو — نسخه بهبود‌یافته</title>
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-Variable-font-face.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تیپ‌های شخصیتی زی‌نو</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-Variable-font-face.css" rel="stylesheet" type="text/css" />
     <style>
-        /* CSS Variables for consistent theming */
-        :root {
-            --brand: #a62f2f; /* Main brand color (red) */
-            --brand-dark: #5a1a1a; /* Darker shade of brand color */
-            --bg: #f6f7fb; /* Light background color */
-            --text: #222; /* Dark text color */
-            --muted: #6b7280; /* Muted text color */
+        /* Styles for the body and overall layout */
+        body {
+            font-family: 'Vazirmatn', sans-serif; /* Changed font to Vazirmatn */
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            direction: rtl; /* Set text direction to right-to-left for Persian */
         }
 
-        /* Universal box-sizing for consistent layout */
-        * {
+        /* Styles for the header section */
+        header {
+            background-color: #5a1a1a; /* Dark red background */
+            color: #fff; /* White text color */
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 5px solid #a62f2f; /* Darker red border at the bottom */
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        header p {
+            margin: 0.5rem 0 0;
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        /* Styles for the floating navigation (table of contents and search) */
+        nav {
+            position: fixed; /* Make the navigation fixed on the screen */
+            top: 0;
+            right: 0; /* Position on the right side for RTL */
+            width: 250px; /* Fixed width for the sidebar */
+            max-height: 95vh; /* Limit height to prevent overflow and enable scrolling */
+            background-color: #f0f0f0;
+            padding: 1rem;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.1); /* Shadow on the left side */
+            overflow-y: auto; /* Enable scrolling if content overflows */
+            z-index: 1000; /* Ensure it stays on top of other content */
+            border-radius: 0 0 0 10px; /* Rounded bottom-left corner */
+            box-sizing: border-box; /* Include padding in width/height */
+        }
+
+        nav h3 {
+            text-align: center;
+            color: #5a1a1a;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        nav li {
+            margin-bottom: 0.5rem;
+        }
+
+        nav a {
+            display: block;
+            background-color: #a62f2f;
+            color: #fff;
+            padding: 0.7rem 1.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+
+        nav a:hover {
+            background-color: #5a1a1a;
+        }
+
+        /* Search section styles */
+        .search-section {
+            padding-top: 1rem;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            padding-left: 10px; /* Added padding to contain input */
+            padding-right: 10px; /* Added padding to contain input */
+        }
+
+        .search-section input[type="text"] {
+            width: 100%; /* Set to 100% and let parent padding control spacing */
+            padding: 0.7rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Include padding in width */
+            font-family: 'Vazirmatn', sans-serif;
+            text-align: right; /* Align text to right for Persian */
+        }
+
+        .search-section button {
+            background-color: #5a1a1a;
+            color: #fff;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        .search-section button:hover {
+            background-color: #a62f2f;
+        }
+
+        /* Main content area adjusted for fixed nav */
+        main {
+            padding: 2rem;
+            max-width: 1000px;
+            margin-left: auto; /* Push content to the left */
+            margin-right: 270px; /* Space for the fixed nav (width + padding) */
             box-sizing: border-box;
         }
 
-        /* Full height for html and body */
-        html, body {
-            height: 100%;
-        }
-
-        /* Base body styles */
-        body {
-            font-family: 'Vazirmatn', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            margin: 0;
-        }
-
-        /* Header styles */
-        header {
-            position: sticky; /* Sticky header for navigation */
-            top: 0;
-            z-index: 100; /* Ensure header stays on top */
-            background: linear-gradient(180deg, var(--brand-dark), #712020); /* Gradient background */
-            color: #fff;
-            border-bottom: 4px solid var(--brand);
-            padding: 1.25rem 1rem;
-        }
-
-        header .wrap {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        h1 {
-            margin: 0;
-            font-size: 1.4rem;
-            letter-spacing: -.2px;
-        }
-
-        .sub {
-            opacity: .85;
-            font-size: .95rem;
-        }
-
-        /* Main container for layout (sidebar + content) */
-        .container {
-            max-width: 1200px;
-            margin: 1rem auto;
-            display: grid;
-            grid-template-columns: 280px 1fr; /* Two columns: sidebar (fixed) and content (flexible) */
-            gap: 1rem;
-            padding: 0 1rem;
-        }
-
-        /* Sidebar navigation styles */
-        nav[aria-label] {
-            position: sticky; /* Sticky sidebar */
-            top: 5.25rem; /* Position below header */
-            align-self: start; /* Align to the start of the grid area */
-            background: #fff;
-            border: 1px solid #e5e7eb;
-            border-radius: 14px;
-            box-shadow: 0 6px 18px rgba(0,0,0,.06);
-        }
-
-        .nav-inner {
-            padding: 1rem;
-        }
-
-        .nav-title {
-            margin: .25rem 0 1rem;
-            color: var(--brand-dark);
-            font-weight: 800;
-        }
-
-        .toc {
-            list-style: none; /* Remove default list bullets */
-            padding: 0;
-            margin: 0 0 1rem;
-        }
-
-        .toc a {
-            display: block;
-            padding: .55rem .7rem;
-            margin: .25rem 0;
-            border-radius: 9px;
-            text-decoration: none;
-            font-weight: 700;
-            color: #fff;
-            background: var(--brand);
-            text-align: center;
-            outline: 0;
-        }
-
-        .toc a:hover, .toc a.is-active {
-            background: var(--brand-dark); /* Active/hover state for TOC links */
-        }
-
-        /* Search section in sidebar */
-        .search {
-            border-top: 1px solid #eee;
-            padding-top: .75rem;
-        }
-
-        .search label {
-            display: block;
-            font-size: .9rem;
-            color: var(--muted);
-            margin-bottom: .35rem;
-        }
-
-        .input-row {
-            display: flex;
-            gap: .5rem;
-        }
-
-        .input-row input {
-            flex: 1;
-            border: 1px solid #d1d5db;
-            border-radius: 9px;
-            padding: .6rem .8rem;
-            font-family: inherit;
-        }
-
-        .btn {
-            background: var(--brand-dark);
-            color: #fff;
-            border: 0;
-            border-radius: 9px;
-            padding: .6rem .9rem;
-            font-weight: 800;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background: var(--brand);
-        }
-
-        .assist {
-            font-size: .85rem;
-            color: var(--muted);
-            margin-top: .35rem;
-        }
-
-        .results {
-            margin-top: .5rem;
-            font-size: .9rem;
-            color: var(--muted);
-        }
-
-        /* Card styles (main content area) */
-        main {
-            min-width: 0; /* Allow content to shrink */
-        }
-
-        .card {
-            background: #fff;
-            border: 1px solid #e5e7eb;
-            border-radius: 14px;
+        /* Styles for individual type cards */
+        .type-card {
+            background-color: #fff; /* White background for cards */
+            border: 1px solid #ddd; /* Light grey border */
+            border-radius: 10px; /* Rounded corners */
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow */
             overflow: hidden;
-            box-shadow: 0 10px 24px rgba(0,0,0,.06);
-            margin-bottom: 1rem;
         }
 
-        .card h2 {
+        /* Styles for the heading of each type card */
+        .type-card h2 {
+            background-color: #a62f2f; /* Red background for type headings */
+            color: #fff; /* White text color */
             margin: 0;
-            background: var(--brand);
-            color: #fff;
-            padding: 1rem 1.25rem;
-            border-bottom: 2px solid var(--brand-dark);
-            font-size: 1.25rem;
+            padding: 1.5rem;
             text-align: center;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #5a1a1a; /* Darker red border at the bottom */
         }
 
+        /* Styles for the content within each type card */
         .content {
-            padding: 1rem 1.25rem;
+            padding: 1.5rem;
         }
 
         .content h3 {
-            color: var(--brand-dark);
-            border-bottom: 2px solid #f0f0f0;
-            padding-bottom: .35rem;
-            margin-top: 1.25rem;
+            color: #5a1a1a; /* Dark red text color for subheadings */
+            border-bottom: 2px solid #e0e0e0; /* Light grey border at the bottom */
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+            font-size: 1.5rem;
         }
 
         .content ul {
-            list-style: none;
+            list-style: none; /* Remove default list bullets */
             padding: 0;
             margin: 1rem 0;
         }
 
         .content li {
-            background: #fafafa;
-            border-right: 4px solid var(--brand);
-            border-radius: 8px;
+            background-color: #f9f9f9; /* Very light grey background for list items */
+            border-radius: 5px; /* Rounded corners for list items */
             padding: 1rem;
-            margin: .6rem 0;
-            line-height: 1.9;
+            margin-bottom: 0.8rem;
+            line-height: 1.8;
+            border-right: 4px solid #a62f2f; /* Red border on the right side */
         }
 
         .content li strong {
-            color: var(--brand-dark);
+            color: #5a1a1a; /* Dark red text for strong elements */
         }
 
-        /* Highlighting styles for search results */
-        mark {
-            background: #fff7ae; /* Yellow background for highlights */
-            padding: .05em .25em;
-            border-radius: .25em;
+        /* Style for highlighted text */
+        .highlight {
+            background-color: yellow; /* Highlight color */
+            font-weight: bold;
+            padding: 2px 4px;
+            border-radius: 3px;
         }
 
-        /* Utility classes */
-        .toolbar {
-            display: flex;
-            align-items: center;
-            gap: .5rem;
-            margin-right: auto;
-        }
-
-        .clear-btn {
-            background: transparent;
-            color: #fff;
-            border: 1px solid rgba(255,255,255,.5);
-            padding: .35rem .55rem;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        .clear-btn:hover {
-            background: rgba(255,255,255,.1);
-        }
-
-        /* Mobile specific styles */
-        .mobile-toggle {
-            display: none; /* Hidden by default on larger screens */
-        }
-
-        @media (max-width: 880px) {
-            .container {
-                grid-template-columns: 1fr; /* Single column layout on small screens */
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            nav {
+                position: static; /* Make nav static on smaller screens */
+                width: auto;
+                height: auto;
+                max-height: none; /* Remove max-height for static nav */
+                box-shadow: none;
+                border-radius: 8px;
+                margin: 1rem;
             }
-            nav[aria-label] {
-                position: static; /* Remove sticky behavior on mobile */
-            }
-            .mobile-toggle {
-                display: inline-flex; /* Show mobile toggle button */
-                margin-inline-start: auto;
-            }
-            .drawer {
-                display: none; /* Hide sidebar content by default on mobile */
-            }
-            .drawer.is-open {
-                display: block; /* Show sidebar content when opened */
-            }
-        }
 
-        /* Accessibility focus styles */
-        :is(a, button, input):focus-visible {
-            outline: 3px solid #7cb9ff;
-            outline-offset: 2px;
+            main {
+                margin-right: auto; /* Remove fixed margin for smaller screens */
+                padding: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column; /* Stack nav items vertically */
+            }
+
+            nav a {
+                margin-bottom: 0.5rem;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="wrap">
-            <div>
-                <h1>دسته‌بندی تیپ‌های شخصیتی نه‌گانه</h1>
-                <div class="sub">بر اساس دوره زی‌نو</div>
-            </div>
-            <button class="mobile-toggle clear-btn" aria-expanded="false" aria-controls="drawer">فهرست</button>
-            <div class="toolbar">
-                <button class="clear-btn" id="clearSearch" title="پاک‌کردن جستجو">پاک‌کردن جستجو</button>
-                <a class="clear-btn" href="#top">بازگشت به ابتدا</a>
-            </div>
-        </div>
+        <h1>دسته‌بندی تیپ‌های شخصیتی نه‌گانه</h1>
+        <p>بر اساس دوره زی‌نو</p>
     </header>
 
-    <div class="container">
-        <nav aria-label="فهرست تیپ‌ها">
-            <div class="nav-inner">
-                <p class="nav-title">فهرست تیپ‌ها</p>
-                <div id="drawer" class="drawer">
-                    <ul class="toc" id="toc">
-                        <li><a href="#type-1">تیپ ۱</a></li>
-                        <li><a href="#type-2">تیپ ۲</a></li>
-                        <li><a href="#type-3">تیپ ۳</a></li>
-                        <li><a href="#type-4">تیپ ۴</a></li>
-                        <li><a href="#type-5">تیپ ۵</a></li>
-                        <li><a href="#type-6">تیپ ۶</a></li>
-                        <li><a href="#type-7">تیپ ۷</a></li>
-                        <li><a href="#type-8">تیپ ۸</a></li>
-                        <li><a href="#type-9">تیپ ۹</a></li>
-                    </ul>
-                    <div class="search">
-                        <label for="q">جستجو در محتوا</label>
-                        <div class="input-row">
-                            <input id="q" type="search" placeholder="مثلاً: ترس بنیادی، تیپ ۳، کودکـی…" autocomplete="off" />
-                            <button class="btn" id="btnSearch" aria-label="جستجو">جستجو</button>
-                        </div>
-                        <div class="assist">↵ اینتر = جستجو · Esc = پاک‌کردن</div>
-                        <div class="results" id="results"></div>
-                    </div>
-                </div>
+    <nav>
+        <h3>فهرست تیپ‌ها</h3>
+        <ul>
+            <li><a href="#type-1">تیپ ۱</a></li>
+            <li><a href="#type-2">تیپ ۲</a></li>
+            <li><a href="#type-3">تیپ ۳</a></li>
+            <li><a href="#type-4">تیپ ۴</a></li>
+            <li><a href="#type-5">تیپ ۵</a></li>
+            <li><a href="#type-6">تیپ ۶</a></li>
+            <li><a href="#type-7">تیپ ۷</a></li>
+            <li><a href="#type-8">تیپ ۸</a></li>
+            <li><a href="#type-9">تیپ ۹</a></li>
+        </ul>
+
+        <div class="search-section">
+            <h3>جستجو در محتوا</h3>
+            <input type="text" id="searchInput" placeholder="کلمه مورد نظر را وارد کنید...">
+            <button onclick="searchContent()">جستجو</button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Type 1 Card -->
+        <div class="type-card" id="type-1">
+            <h2>تیپ ۱: کمال‌گرا (The Perfectionist)</h2>
+            <div class="content">
+                <h3>شرح تیپ ۱</h3>
+                <ul>
+                    <li><strong>فضای کودکی:</strong> افراد تیپ یک در کودکی، خود را مسئول مشکلات خانواده می‌دانسته‌اند. آن‌ها یا به شدت مورد انتقاد و تنبیه قرار گرفته‌اند یا حس کرده‌اند که به اندازه کافی خوب نیستند. به دلیل توقعات زیاد والدین، همیشه تلاش می‌کرده‌اند که "بچه‌ی خوب" باشند و نقش قهرمان خانواده را ایفا می‌کرده‌اند. این سخت‌گیری موجب شده است که انعطاف‌ناپذیر شوند و تصمیم بگیرند که خودشان والد و قاضی خود باشند تا از تنبیه شدن توسط دیگران جلوگیری کنند.</li>
+                    <li><strong>چارچوب‌ها و جهان‌بینی:</strong> تیپ یک خود و دنیای اطرافش را ناقص می‌بیند و معتقد است برای تکامل همه چیز باید کارهای زیادی انجام شود. آن‌ها باور دارند که برای بهبود دنیا رسالتی دارند و حاضرند برای آن بجنگند. از نقص داشتن واهمه دارند و به نظم، ترتیب، ساختار و شفافیت علاقه دارند. جهان‌بینی آن‌ها "درست یا غلط"، "سیاه یا سفید" و "خوب یا بد" است و منطقه‌ی خاکستری برایشان وجود ندارد. این نگرش منجر به رنجش، خشم، گله و شکایت می‌شود.</li>
+                </ul>
+
+                <h3>سطوح تیپ ۱</h3>
+                <ul>
+                    <li><strong>در سطح میانی:</strong> تلاش فردی با شخصیت تیپ یک، رسیدن به یک زندگی متعالی است و تعریف مشخصی هم از آن دارد. تلاشش این است که کارهایش را بدون عیب و نقص و بر اساس استانداردهایی که دارد، انجام دهد. مسئول و پیگیر امور است و تا آن‌ها را به نتیجه نرساند، آرام نمی‌گیرد. این طرح آرمانی که محیط اطراف و جامعه باید به سوی کمال در حرکت باشند را در سر دارد. معیارهای عالی و کاملی دارد و همه چیز باید بر اساس آن‌ها باشد. برای همین در روابط شخصی و اجتماعی سخت‌گیرانه و غیر قابل انعطاف عمل می‌کند. در راه اصلاح اشتباهات خود و دیگران سخت‌گیر است و اگر شرایط مطابق میلش پیش نرود، می‌رنجد و خشمگین می‌شود و اگر با خویشتن‌داری که خاص آن‌ها است، نتواند کار را به نتیجه برساند، آن وقت خشمش را بروز می‌دهد که در این مواقع بسیار رک و برنده می‌شود. آن‌ها خود را با این عبارت توصیف می‌کنند: "من انسانی منطقی و منصف هستم و بر این باورند که برای بهبود جامعه، مامور و مسئول می‌باشند."</li>
+                    <li><strong>در سطح متعادل:</strong> عاقل، فهیم و واقع‌بین هستند و خارج از قالب‌ها و باید‌ها و نبایدها زندگی می‌کنند. در مسیر خودشکوفایی هستند و با پذیرش هر آنچه هست، در هر لحظه مناسب‌ترین پاسخ‌ها و عمل‌ها را انتخاب می‌کنند. گرایش به خوبی و خوب بودن دارند و راستی، درستی و عدالت ارزش‌های بنیادی آن‌ها است. با‌وجدان و پای‌بند به اصول هستند، اخلاقی رفتار می‌‌کنند و کار خلاف نمی‌کنند. خواهان زندگی پرمعنا و پر‌بار هستند و استوار و معنوی می‌باشند. خیلی دقیق و در روابط قابل اطمینان هستند. در شناسایی درست و غلط، قوه تشخیص قوی و توانایی این را دارند که استعدادها و موقعیت‌ها را به طور واقعی ببینند و با پشتکار به آن تحقق بخشند. خواستار منطق و استدلال هستند و به خاطر حس مسئولیت زیاد، انضباط بالایی در کارهای خود دارند، اما تعادل مناسبی بین کار و سایر امور زندگی برقرار و معمولا خود و ‌اطرافیان را خوب هدایت می‌کنند.</li>
+                    <li><strong>در سطح نامتعادل:</strong> پذیرش واقعیت برای‌شان مشکل می‌شود. به شدت قضاوت می‌کنند. بسیار خرده‌گیر، عیب‌جو و محدود کننده هستند. ساینده روان خود و اطرافیان‌شان می‌شوند. پذیرش و انعطاف‌پذیری ندارند و به طور عمده صفر و یک فکر می‌کنند. بسیار نگران اشتباهات و نواقص هستند، به‌ طوری‌ که از آنچه هست، همیشه ناراضی‌اند. ذهنی متعصب و بسته‌ دارند، به شکلی که راه‌های جدید را نمی‌توان به آن‌ها نشان داد. بسیار لجوج، یک‌دنده و زورگو می‌شوند و در مقابل تغییر خیلی مقاومت می‌کنند. وسواس فکری و رفتاری دارند. خیلی ایرادگیر هستند و همه چیز را در اطراف خود نقد می‌کنند. آن‌ها در این حالت خواسته‌ها, نیازها و احساسات خود را مهم نمی‌دانند, زیرا بیش از حد برای آنچه باید انجام دهند, ارزش قائلند. احساس سرخوردگی و یاس دارند. زیرا به نظر آن‌ها, هیچ چیز درست نیست. همیشه تلاش می‌کنند خود یا دیگران و شرایط را کنترل کنند. در نتیجه رفتار تهاجمی دارند و به حریم خصوصی دیگران نیز وارد می‌شوند و دخالت می‌کنند. برای دفاع از خود به شدت از دیگران انتقاد می‌کنند و آن‌ها را مورد عیب‌جویی قرار می‌دهند.</li>
+                </ul>
+
+                <h3>جملات مرتبط با توسعه سطوح تیپ ۱</h3>
+                <ul>
+                    <li><strong>پیام دوران کودکی (کلام شکل‌دهنده تیپ):</strong> "این خوب نیست که اشتباه کنی یا نقصی داشته باشی."</li>
+                    <li><strong>پیام تعدیل‌کننده تیپ:</strong> "تو همین‌طوری خوب و کامل هستی."</li>
+                    <li><strong>ترس بنیادی:</strong> بد بودن، عیب داشتن و غیراخلاقی بودن.</li>
+                    <li><strong>رفتار در زمان فعال شدن ترس (منیت):</strong> رنجش.</li>
+                    <li><strong>تجربه درونی در زمان فعال شدن ترس (هوای نفس):</strong> خشم.</li>
+                    <li><strong>هدیه تولد:</strong> دقت (که در سطوح متعادل به شکل کمال ابراز می‌شود).</li>
+                    <li><strong>ابراز ناآگاهانه آن:</strong> عیب‌جویی و کمال‌گرایی افراطی.</li>
+                    <li><strong>اجتناب از:</strong> دیده شدن خشم.</li>
+                    <li><strong>حل کردن تضاد با:</strong> توجیه کردن.</li>
+                    <li><strong>شکایت پنهانی:</strong> "همیشه حق با من است و دیگران باید به نکته‌بینی‌های من توجه‌ کنند."</li>
+                    <li><strong>انگاشت نوپدید (در سطوح متعادل):</strong> "قدردانم که در جهانی کامل زندگی می‌کنم و کمال مطلوب خود را که از سرچشمه هستی است می‌شناسم."</li>
+                </ul>
             </div>
-        </nav>
+        </div>
 
-        <main id="top">
-            <!-- Type 1 Card -->
-            <section class="card" id="type-1">
-                <h2>تیپ ۱: کمال‌گرا (The Perfectionist)</h2>
-                <div class="content">
-                    <h3>شرح تیپ ۱</h3>
-                    <ul>
-                        <li><strong>فضای کودکی:</strong> افراد تیپ یک در کودکی، خود را مسئول مشکلات خانواده می‌دانسته‌اند. آن‌ها یا به شدت مورد انتقاد و تنبیه قرار گرفته‌اند یا حس کرده‌اند که به اندازه کافی خوب نیستند. به دلیل توقعات زیاد والدین، همیشه تلاش می‌کرده‌اند که "بچه‌ی خوب" باشند و نقش قهرمان خانواده را ایفا می‌کرده‌اند. این سخت‌گیری موجب شده است که انعطاف‌ناپذیر شوند و تصمیم بگیرند که خودشان والد و قاضی خود باشند تا از تنبیه شدن توسط دیگران جلوگیری کنند.</li>
-                        <li><strong>چارچوب‌ها و جهان‌بینی:</strong> تیپ یک خود و دنیای اطرافش را ناقص می‌بیند و معتقد است برای تکامل همه چیز باید کارهای زیادی انجام شود. آن‌ها باور دارند که برای بهبود دنیا رسالتی دارند و حاضرند برای آن بجنگند. از نقص داشتن واهمه دارند و به نظم، ترتیب، ساختار و شفافیت علاقه دارند. جهان‌بینی آن‌ها "درست یا غلط"، "سیاه یا سفید" و "خوب یا بد" است و منطقه‌ی خاکستری برایشان وجود ندارد. این نگرش منجر به رنجش، خشم، گله و شکایت می‌شود.</li>
-                    </ul>
+        <!-- Type 2 Card -->
+        <div class="type-card" id="type-2">
+            <h2>تیپ ۲: نوع‌دوست (The Altruist)</h2>
+            <div class="content">
+                <h3>شرح تیپ ۲</h3>
+                <ul>
+                    <li><strong>فضای کودکی:</strong> افراد تیپ دو در کودکی در محیطی رشد کرده‌اند که توجه به نیازهای فردی نوعی خودخواهی تلقی می‌شده است. برای محبوب بودن، باید نیازهای دیگران را بر نیازهای خود مقدم می‌دانسته‌اند. آن‌ها یاد گرفته‌اند که باید ببخشند تا بتوانند دریافت کنند و محبت دیگران را با زحمت به دست آورند. ترس بنیادی آن‌ها این است که به خودی خود ارزشمند و دوست‌داشتنی نیستند.</li>
+                    <li><strong>چارچوب‌ها و جهان‌بینی:</strong> این تیپ از طریق کمک به دیگران به دنبال جلب توجه و تأیید است. آن‌ها با پنهان کردن مشکلات خود، خود را فردی بی‌نیاز نشان می‌دهند. تیپ دو معتقد است که با اراده او است که کارهای بزرگ انجام می‌شود. کمک کردن آن‌ها گاهی مداخله‌جویانه می‌شود و با هدف ایجاد وابستگی در دیگران انجام می‌گیرد.</li>
+                </ul>
+                <h3>سطوح تیپ ۲</h3>
+                <ul>
+                    <li><strong>در سطح میانی:</strong> افراد تیپ دو را یاری‌رسان می‌نامند. زمانی که با کمال میل کمک می‌کنند، مهربان هستند و زمانی که تمایل دارند به عنوان یک فرد مهربان و بخشنده دیده شوند، در واقع مهرطلبی می‌کنند. آن‌ها تحت تاثیر مرکز احساسات عمل می‌کنند. تیپ دو معمولا بر این باور است که خودش نه مشکلی و نه به چیزی احتیاج دارد، بلکه این دیگرانند که محتاج او هستند و تنها اوست که می‌تواند و باید به آن‌ها کمک کند. برای دوست داشته شدن، حاضر است حتی از احساساتش نیز بگذرد و خود را قربانی کند. او به صورت اغراق آمیز احساساتش را ابراز می‌کند. به این دلیل توجه و مهرورزی او اغلب به سمت محیط خارج است و کمتر به خود و نیازهایش می‌پردازد و این امر موجب می‌شود برای پاسخ دادن به نیازهای درونی‌اش به دیگران روی آورد. با این از خود‌گذشتگی، توجه، محبت و قدردانی دیگران را بدست می‌آورد.</li>
+                    <li><strong>در سطح متعادل:</strong> بسیار سخاوتمند و دست و دلباز هستند و با رغبت دارایی‌های مادی و معنوی (انرژی، وقت و مانند آن) خود را در اختیار دیگران قرار می‌دهند. نسبت به احساسات دیگران حساس، حامی و پشتیبان هستند. مهربان و متواضع هستند و خودخواهی ندارند. نوع‌دوست می‌باشند و کمک را برای تایید خود انجام نمی‌دهند. همدل و مهربان هستند، به دیگران و احساس ‌آن‌ها اهمیت می‌دهند و برای درک نیازها، خواسته‌ها و احساسات دیگران دارای حسی بسیار قوی هستند. قادر به تشخیص و دیدن خوبی‌های دیگران هستند و صمیمانه از ایشان تعریف و آن‌ها را تشویق می‌کنند. خدمت به دیگران برای‌شان مهم است اما نگهداری و توجه به خودشان در اولویت بالاتری قرار دارد. به‌ درستی می‌دانند که حد و مرز دادن و گرفتن کجاست، در نتیجه ارزش خودشان را از درون خود می‌دانند و خارج از خود در جستجوی آن نیستند. آن‌ها مشغول رشد و پرورش، سخاوتمندی و بخشش یک عشق واقعی به دیگران هستند.</li>
+                    <li><strong>در سطح نامتعادل:</strong> از طریق کمک کردن، به شدت خواهان توجه دیگرانند و ترس دارند که از مناسبات اجتماعی کنار گذاشته شوند. آن‌ها هلاک همه‌اند. این تیپ در بیشتر مواقع، خودش را قربانی دیگران می‌کند. چون احساس می‌کند دیگران ارزشی برای او قایل نیستند، حس پشیمانی و ندامت از گذشت و فداکاری‌های خود بر او غالب می‌شود. حرف دلش را آن‌طور که می‌خواهد نمی‌تواند بزند. همیشه انتظار دارد که دیگران همه چیز را بدانند. چون او درک روشنی از خودش ندارد و با خود شفاف نیست، این شفافیت را از دیگران انتظار دارد. همیشه کاری می‌کند که دیگران را دست‌کاری و آن‌ها را در جهت نیت‌های خود استثمار عاطفی کند. بسیار متظاهر و فریبکار می‌شود و برای به دست آوردن, به ریاکاری و دروغ می‌پردازد.</li>
+                </ul>
+                <h3>جملات مرتبط با توسعه سطوح تیپ ۲</h3>
+                <ul>
+                    <li><strong>پیام دوران کودکی (کلام شکل‌دهنده تیپ):</strong> "این خوب نیست که به نیازهای خودت اهمیت بدهی."</li>
+                    <li><strong>پیام تعدیل‌کننده تیپ:</strong> "تو همین‌طوری خواستنی و دوست‌ داشتنی هستی."</li>
+                    <li><strong>ترس بنیادی:</strong> نالایق بودن و دوست داشته نشدن.</li>
+                    <li><strong>رفتار در زمان فعال شدن ترس (منیت):</strong> تملق.</li>
+                    <li><strong>تجربه درونی در زمان فعال شدن ترس (هوای نفس):</strong> غرور.</li>
+                    <li><strong>هدیه تولد:</strong> مهرورزی (در سطوح متعادل به شکل عشق‌ بدون شرط ابراز می‌شود).</li>
+                    <li><strong>ابراز ناآگاهانه آن:</strong> جلب محبت دیگران با از خود گذشتگی.</li>
+                    <li><strong>اجتناب از:</strong> دیده شدن نیازهایش.</li>
+                    <li><strong>حل کردن تضاد با:</strong> محبت کردن.</li>
+                    <li><strong>شکایت پنهانی:</strong> "من همیشه دیگران را دوست دارم، هرچند آن‌ها آن‌طور که باید قدر مرا نمی‌دانند."</li>
+                    <li><strong>انگاشت نوپدید (در سطوح متعادل):</strong> "قدردانم که هستی با نیروی عشق پدید آمده است و مجرایی مدام و لبریز از منبع بی‌پایان عشق هستم."</li>
+                </ul>
+            </div>
+        </div>
 
-                    <h3>سطوح تیپ ۱</h3>
-                    <ul>
-                        <li><strong>در سطح میانی:</strong> تلاش فردی با شخصیت تیپ یک، رسیدن به یک زندگی متعالی است و تعریف مشخصی هم از آن دارد. تلاشش این است که کارهایش را بدون عیب و نقص و بر اساس استانداردهایی که دارد، انجام دهد. مسئول و پیگیر امور است و تا آن‌ها را به نتیجه نرساند، آرام نمی‌گیرد. این طرح آرمانی که محیط اطراف و جامعه باید به سوی کمال در حرکت باشند را در سر دارد. معیارهای عالی و کاملی دارد و همه چیز باید بر اساس آن‌ها باشد. برای همین در روابط شخصی و اجتماعی سخت‌گیرانه و غیر قابل انعطاف عمل می‌کند. در راه اصلاح اشتباهات خود و دیگران سخت‌گیر است و اگر شرایط مطابق میلش پیش نرود، می‌رنجد و خشمگین می‌شود و اگر با خویشتن‌داری که خاص آن‌ها است، نتواند کار را به نتیجه برساند، آن وقت خشمش را بروز می‌دهد که در این مواقع بسیار رک و برنده می‌شود. آن‌ها خود را با این عبارت توصیف می‌کنند: "من انسانی منطقی و منصف هستم و بر این باورند که برای بهبود جامعه، مامور و مسئول می‌باشند."</li>
-                        <li><strong>در سطح متعادل:</strong> عاقل، فهیم و واقع‌بین هستند و خارج از قالب‌ها و باید‌ها و نبایدها زندگی می‌کنند. در مسیر خودشکوفایی هستند و با پذیرش هر آنچه هست، در هر لحظه مناسب‌ترین پاسخ‌ها و عمل‌ها را انتخاب می‌کنند. گرایش به خوبی و خوب بودن دارند و راستی، درستی و عدالت ارزش‌های بنیادی آن‌ها است. با‌وجدان و پای‌بند به اصول هستند، اخلاقی رفتار می‌‌کنند و کار خلاف نمی‌کنند. خواهان زندگی پرمعنا و پر‌بار هستند و استوار و معنوی می‌باشند. خیلی دقیق و در روابط قابل اطمینان هستند. در شناسایی درست و غلط، قوه تشخیص قوی و توانایی این را دارند که استعدادها و موقعیت‌ها را به طور واقعی ببینند و با پشتکار به آن تحقق بخشند. خواستار منطق و استدلال هستند و به خاطر حس مسئولیت زیاد، انضباط بالایی در کارهای خود دارند، اما تعادل مناسبی بین کار و سایر امور زندگی برقرار و معمولا خود و ‌اطرافیان را خوب هدایت می‌کنند.</li>
-                        <li><strong>در سطح نامتعادل:</strong> پذیرش واقعیت برای‌شان مشکل می‌شود. به شدت قضاوت می‌کنند. بسیار خرده‌گیر، عیب‌جو و محدود کننده هستند. ساینده روان خود و اطرافیان‌شان می‌شوند. پذیرش و انعطاف‌پذیری ندارند و به طور عمده صفر و یک فکر می‌کنند. بسیار نگران اشتباهات و نواقص هستند، به‌ طوری‌ که از آنچه هست، همیشه ناراضی‌اند. ذهنی متعصب و بسته‌ دارند، به شکلی که راه‌های جدید را نمی‌توان به آن‌ها نشان داد. بسیار لجوج، یک‌دنده و زورگو می‌شوند و در مقابل تغییر خیلی مقاومت می‌کنند. وسواس فکری و رفتاری دارند. خیلی ایرادگیر هستند و همه چیز را در اطراف خود نقد می‌کنند. آن‌ها در این حالت خواسته‌ها, نیازها و احساسات خود را مهم نمی‌دانند, زیرا بیش از حد برای آنچه باید انجام دهند, ارزش قائلند. احساس سرخوردگی و یاس دارند. زیرا به نظر آن‌ها, هیچ چیز درست نیست. همیشه تلاش می‌کنند خود یا دیگران و شرایط را کنترل کنند. در نتیجه رفتار تهاجمی دارند و به حریم خصوصی دیگران نیز وارد می‌شوند و دخالت می‌کنند. برای دفاع از خود به شدت از دیگران انتقاد می‌کنند و آن‌ها را مورد عیب‌جویی قرار می‌دهند.</li>
-                    </ul>
+        <!-- Type 3 Card -->
+        <div class="type-card" id="type-3">
+            <h2>تیپ ۳: موفقیت‌گرا (The Success-oriented)</h2>
+            <div class="content">
+                <h3>شرح تیپ ۳</h3>
+                <ul>
+                    <li><strong>فضای کودکی:</strong> این افراد در دوران کودکی به خاطر دستاوردهایشان دیده و تأیید شده‌اند، نه به خاطر خودشان. آن‌ها آموخته‌اند که اعتبار و تأیید درونی را با موفقیت‌های بیرونی به دست آورند. به طور ناخودآگاه شرطی شده‌اند که تا زمانی ارزشمند هستند که کاری انجام دهند و موفقیتی داشته باشند.</li>
+                    <li><strong>چارچوب‌ها و جهان‌بینی:</strong> تیپ سه به طور مداوم به دنبال موفقیت‌های جدید است. آن‌ها برای رسیدن به اهداف خود، نقش‌های مختلفی بازی می‌کنند و تصویری موفق از خود می‌سازند. این افراد با احساسات خود بیگانه هستند و آن‌ها را مانعی برای پیشرفت می‌دانند. هویت خود را با موفقیت‌هایشان یکی می‌دانند.</li>
+                </ul>
+                <h3>سطوح تیپ ۳</h3>
+                <ul>
+                    <li><strong>در سطح میانی:</strong> افراد تیپ سه به خوبی می‌دانند که برای جلب نظر دیگران چه کارهایی باید انجام دهند و به راحتی می‌توانند خود را با شرایط وفق دهند و اوضاع را با خواسته‌های خودشان منطبق سازند. چون کارایی برای این افراد از اولویت برخوردار است در نتیجه در یک زمان چندین پروژه یا کار را انجام می‌دهند. آن‌ها همیشه لیستی از کارهایی که باید انجام بدهند، دارند. این افراد برای اثربخشی بر کاری که می‌کنند‌، ‌دست به کنترل شرایط می‌زنند و تا زمانی که شرایط در کنترل آن‌ها است‌، کارایی بالایی دارند و در ضمن احساس امنیت و آرامش هم می‌کنند. تیپ سه اساسا رقابت‌طلب است و خود را در رقابت‌ها جستجو می‌کند و نسبت به تیپ‌های دیگر از اعتماد به نفس بالایی برخوردار است.</li>
+                    <li><strong>در سطح متعادل:</strong> انگیزه آن‌ها برای رشد فردی و موثر و مفید بودن، بسیار قوی است. از درون سوق داده می‌شوند و راهنمای درونی دارند و ارزش‌های مادی و معنوی خود را باور دارند. همان‌طور که به نظر می‌رسند، معتبر و روراست هستند. به طور معمول جذاب، پرانرژی و دوست‌داشتنی می‌باشند. توانمندی بالا، بخشی از بودن طبیعی آن‌ها است و برای جامعه و محیط‌ خود هم مفید و موثر هستند. آن‌ها بهترین هر آنچه که می‌توانند باشند، هستند. نسبت به تحولات بیرونی، واقع‌بین هستند. در کارهای خود اعتماد به نفس بالایی دارند و با انعطاف‌پذیری بسیار با چالش‌های زندگی روبرو می‌شوند. آدم‌های اثربخشی هستند و همیشه در حال یادگیری‌‌های جدیدند. انرژی خیلی بالایی دارند و به زودی خسته نمی‌شوند. خیلی عملیاتی هستند و قدرت اجرایی بالایی دارند.</li>
+                    <li><strong>در سطح نامتعادل:</strong> سعی دارند به خود و دیگران نشان دهند که انسان برتری هستند. به هیچ وجه حاضر نیستند که با عواطف خود رو‌به‌رو شوند. خود‌شیفته هستند و نسبت به موفقیت دیگران بسیار آزمند و حریص‌اند. برای همین حاضرند دست به هر کاری بزنند تا از توهم خود‌برتربینی‌شان حفاظت کنند و در جایگاه بالاتری که مد نظرشان است بمانند. فریب‌کارند و در روابط اجتماعی خود نقاب‌های بسیاری بر چهره می‌زنند؛ در نتیجه افراد قابل اعتمادی به حساب نمی‌آیند. کینه‌ای و انتقام‌جو هستند. سعی در تخریب و برهم‌زدن شادی دیگران دارند. بی‌رحم و عقده‌ای هستند و در از بین‌ بردن هر آنچه که آن‌ها را به یاد اشتباهات، کمبودها و عدم موفقیت‌های‌شان می‌اندازد، اصرار زیاد دارند. به شدت رقابتی هستند و فرمول آن‌ها معمولا برد-باخت است. آن‌ها برای موفق‌ شدن دست به هر کاری می‌زنند.</li>
+                </ul>
+                <h3>جملات مرتبط با توسعه سطوح تیپ ۳</h3>
+                <ul>
+                    <li><strong>پیام دوران کودکی (کلام شکل‌دهنده تیپ):</strong> "این خوب نیست که دستاوردهای متعدد و فوق‌العاده‌ای نداشته باشی."</li>
+                    <li><strong>پیام تعدیل‌کننده تیپ:</strong> "تو برای وجود خودت ارزشمند هستی."</li>
+                    <li><strong>ترس بنیادی:</strong> بی‌ارزش و بدون دستاورد بودن.</li>
+                    <li><strong>رفتار در زمان فعال شدن ترس (منیت):</strong> فخرفروشی.</li>
+                    <li><strong>تجربه درونی در زمان فعال شدن ترس (هوای نفس):</strong> تزویر.</li>
+                    <li><strong>هدیه تولد:</strong> پشتکار (در سطوح متعادل به شکل توانمندی ابراز می‌شود).</li>
+                    <li><strong>ابراز ناآگاهانه آن:</strong> موفقیت‌جویی افراطی.</li>
+                    <li><strong>اجتناب از:</strong> دیده شدن شکست.</li>
+                    <li><strong>حل کردن تضاد با:</strong> سماجت کردن.</li>
+                    <li><strong>شکایت پنهانی:</strong> "من انسانی بسیار لایق هستم و دیگران به من حسادت می‌کنند."</li>
+                    <li><strong>انگاشت نوپدید (در سطوح متعادل):</strong> "قدردانم که در جهانی زنده و پویا زندگی می‌کنم و می‌توانم هر آنچه آرزوی قلبیم است را به دست آرم."</li>
+                </ul>
+            </div>
+        </div>
 
-                    <h3>جملات مرتبط با توسعه سطوح تیپ ۱</h3>
-                    <ul>
-                        <li><strong>پیام دوران کودکی (کلام شکل‌دهنده تیپ):</strong> "این خوب نیست که اشتباه کنی یا نقصی داشته باشی."</li>
-                        <li><strong>پیام تعدیل‌کننده تیپ:</strong> "تو همین‌طوری خوب و کامل هستی."</li>
-                        <li><strong>ترس بنیادی:</strong> بد بودن، عیب داشتن و غیراخلاقی بودن.</li>
-                        <li><strong>رفتار در زمان فعال شدن ترس (منیت):</strong> رنجش.</li>
-                        <li><strong>تجربه درونی در زمان فعال شدن ترس (هوای نفس):</strong> خشم.</li>
-                        <li><strong>هدیه تولد:</strong> دقت (که در سطوح متعادل به شکل کمال ابراز می‌شود).</li>
-                        <li><strong>ابراز ناآگاهانه آن:</strong> عیب‌جویی و کمال‌گرایی افراطی.</li>
-                        <li><strong>اجتناب از:</strong> دیده شدن خشم.</li>
-                        <li><strong>حل کردن تضاد با:</strong> توجیه کردن.</li>
-                        <li><strong>شکایت پنهانی:</strong> "همیشه حق با من است و دیگران باید به نکته‌بینی‌های من توجه‌ کنند."</li>
-                        <li><strong>انگاشت نوپدید (در سطوح متعادل):</strong> "قدردانم که در جهانی کامل زندگی می‌کنم و کمال مطلوب خود را که از سرچشمه هستی است می‌شناسم."</li>
-                    </ul>
-                </div>
-            </section>
+        <!-- Type 4 Card -->
+        <div class="type-card" id="type-4">
+            <h2>تیپ ۴: فردگرا (The Individualist)</h2>
+            <div class="content">
+                <h3>شرح تیپ ۴</h3>
+                <ul>
+                    <li><strong>فضای کودکی:</strong> این افراد در کودکی احساس طرد شدن و تنهایی داشته‌اند و به دنبال یک ناجی می‌گشته‌اند. آن‌ها حس می‌کنند چیزی در خودشان اشتباه است و چیزی را کم دارند. این حس موجب می‌شود که خود را کاملاً متفاوت با دیگران بدانند.</li>
+                    <li><strong>چارچوب‌ها و جهان‌بینی:</strong> تیپ چهار خود را فردی استثنایی می‌داند و به دنبال خاص بودن است. انگیزه اصلی آن‌ها حسادت است. آن‌ها فکر می‌کنند دیگران خوشحال‌تر هستند و دنیا را در گذشته جستجو می‌کنند. این تیپ هویت خود را با یک زخم یا کمبود بنیادی تعریف می‌کند.</li>
+                </ul>
+                <h3>سطوح تیپ ۴</h3>
+                <ul>
+                    <li><strong>در سطح میانی:</strong> تیپ چهار ظاهری متفاوت به خود می‌گیرد تا این کمبود درونی را به شکلی کاهش دهد و گاهی اوقات سعی می‌کند کمبود خود را با یک ظاهر فرهیخته بپوشاند. آداب و حرکات مودبانه و تشریفات خاصی دارد. عتیقه‌جات همیشه تیپ چهار را جذب می‌کند که در اینجا هم پوششی برای کمبود‌هایش است. موضوعات مربوط به گذشته ذهن او را اشغال کرده است و فرصتی برای پرداختن به آینده ندارد. وقتی به بعضی از آرزوهایش می‌رسد‌ از آن دلسرد می‌شود، چون زخم کهنه‌اش التیام نمی‌یابد. انگار جستجو برایش بیشتر از داشتن اهمیت دارد. همیشه سعی می‌کند از نظر عقیده، داشته‌ها و آرزوها فراتر از زندگی عادی برود و همین باعث وجود خلاقیت و دید زیباشناسانه در او می‌شود.</li>
+                    <li><strong>در سطح متعادل:</strong> آن‌ها در روابط خود گرم هستند. افرادی درست و نیکوکارند. شخصیت خود را کندوکاو می‌کنند و صادقانه با آن مواجه می‌شوند. پاک سرشت هستند و یک منش درونی دارند که می‌توانند حال دیگران را تشخیص دهند. آن‌ها می‌توانند امور شخصی خود را به شکلی هنری، زیبا و مطلوب نمایش دهند. عمیقا خلاق‌اند و در این خلاقیت، دیدگاه‌های شخصی و جهانی‌شان را ابراز می‌کنند که حتی ممکن است به یک اثر هنری فوق‌العاده تبدیل شود یا به هر شکل دیگری بروز پیدا کند. به احساسات و انگیزه‌های درونی‌ خود آگاه‌ هستند و احساسات خود را می‌پذیرند. نسبت به خودشان و دیگران حساس‌اند و در‌ این زمینه شهود دارند. حمایت‌گر هستند و به دیگران کمک می‌کنند.</li>
+                    <li><strong>در سطح نامتعادل:</strong> افکار خودبرتربینی پیدا می‌کنند و فکر می‌کنند از دیگران متمایز و با آن‌ها متفاوتند. احساس می‌کنند شیوه‌ زندگی‌ دیگران بی‌معناست و مایل نیستند که مانند دیگران زندگی کنند. افسردگی و احساس سردی نسبت به زندگی دارند. وقتی رویا و تخیلات آن‌ها با شکست مواجه می‌شود، نسبت به خود و دیگرانی که از آن‌ها حمایت نکرده‌اند، بسیار خشمگین می‌شوند و سعی می‌کنند شدت خشم خود را بروز ندهند. به همین دلیل بیشتر کناره‌گیر می‌شوند که اضطراب و افسردگی پیامد آن است. از دنیا طلبکارند. نسبت به خود دلسوزی و ترحم دارند و حسادت به دیگران, حس زیاده خواهی‌شان را به جلو می‌راند. در مقابل ارضای خواسته‌ها و امیال‌شان ناتوان هستند. به طور فزاینده‌ای غیر عملی و غیر اجرایی می‌شوند و توانایی خلق و تولید را از دست می‌دهند.</li>
+                </ul>
+                <h3>جملات مرتبط با توسعه سطوح تیپ ۴</h3>
+                <ul>
+                    <li><strong>پیام دوران کودکی (کلام شکل‌دهنده تیپ):</strong> "این خوب نیست که مانند همه باشی."</li>
+                    <li><strong>پیام تعدیل‌کننده تیپ:</strong> "تو همیشه جایگاه خودت را داری."</li>
+                    <li><strong>ترس بنیادی:</strong> متمایز نبودن و بی‌هویتی.</li>
+                    <li><strong>رفتار در زمان فعال شدن ترس (منیت):</strong> غم‌زدگی.</li>
+                    <li><strong>تجربه درونی در زمان فعال شدن ترس (هوای نفس):</strong> حسادت.</li>
+                    <li><strong>هدیه تولد:</strong> خلاقیت (در سطوح متعادل به شکل شهود ابراز می‌شود).</li>
+                    <li><strong>ابراز ناآگاهانه آن:</strong> اصرار به تمایز.</li>
+                    <li><strong>اجتناب از:</strong> معمولی و متوسط بودن.</li>
+                    <li><strong>حل کردن تضاد با:</strong> هوشیاری و حساس بودن.</li>
+                    <li><strong>شکایت پنهانی:</strong> "من واقعا مناسب این جایگاه نیستم و با همه متفاوت هستم، اما دیگران این را متوجه نمی‌شوند."</li>
+                    <li><strong>انگاشت نوپدید (در سطوح متعادل):</strong> "قدردانم که هستی یکتا و منحصر به فرد است و این‌گونه است که من هم، آینه تمام‌نمای آن هستم."</li>
+                </ul>
+            </div>
+        </div>
 
-            <!-- Type 2 Card -->
-            <section class="card" id="type-2">
-                <h2>تیپ ۲: نوع‌دوست (The Altruist)</h2>
-                <div class="content">
-                    <h3>شرح تیپ ۲</h3>
-                    <ul>
-                        <li><strong>فضای کودکی:</strong> افراد تیپ دو در کودکی در محیطی رشد کرده‌اند که توجه به نیازهای فردی نوعی خودخواهی تلقی می‌شده است. برای محبوب بودن، باید نیازهای دیگران را بر نیازهای خود مقدم می‌دانسته‌اند. آن‌ها یاد گرفته‌اند که باید ببخشند تا بتوانند دریافت کنند و محبت دیگران را با زحمت به دست آورند. ترس بنیادی آن‌ها این است که به خودی خود ارزشمند و دوست‌داشتنی نیستند.</li>
-                        <li><strong>چارچوب‌ها و جهان‌بینی:</strong> این تیپ از طریق کمک به دیگران به دنبال جلب توجه و تأیید است. آن‌ها با پنهان کردن مشکلات خود، خود را فردی بی‌نیاز نشان می‌دهند. تیپ دو معتقد است که با اراده او است که کارهای بزرگ انجام می‌شود. کمک کردن آن‌ها گاهی مداخله‌جویانه می‌شود و با هدف ایجاد وابستگی در دیگران انجام می‌گیرد.</li>
-                    </ul>
-                    <h3>سطوح تیپ ۲</h3>
-                    <ul>
-                        <li><strong>در سطح میانی:</strong> افراد تیپ دو را یاری‌رسان می‌نامند. زمانی که با کمال میل کمک می‌کنند، مهربان هستند و زمانی که تمایل دارند به عنوان یک فرد مهربان و بخشنده دیده شوند، در واقع مهرطلبی می‌کنند. آن‌ها تحت تاثیر مرکز احساسات عمل می‌کنند. تیپ دو معمولا بر این باور است که خودش نه مشکلی و نه به چیزی احتیاج دارد، بلکه این دیگرانند که محتاج او هستند و تنها اوست که می‌تواند و باید به آن‌ها کمک کند. برای دوست داشته شدن، حاضر است حتی از احساساتش نیز بگذرد و خود را قربانی کند. او به صورت اغراق آمیز احساساتش را ابراز می‌کند. به این دلیل توجه و مهرورزی او اغلب به سمت محیط خارج است و کمتر به خود و نیازهایش می‌پردازد و این امر موجب می‌شود برای پاسخ دادن به نیازهای درونی‌اش به دیگران روی آورد. با این از خود‌گذشتگی، توجه، محبت و قدردانی دیگران را بدست می‌آورد.</li>
-                        <li><strong>در سطح متعادل:</strong> بسیار سخاوتمند و دست و دلباز هستند و با رغبت دارایی‌های مادی و معنوی (انرژی، وقت و مانند آن) خود را در اختیار دیگران قرار می‌دهند. نسبت به احساسات دیگران حساس، حامی و پشتیبان هستند. مهربان و متواضع هستند و خودخواهی ندارند. نوع‌دوست می‌باشند و کمک را برای تایید خود انجام نمی‌دهند. همدل و مهربان هستند، به دیگران و احساس ‌آن‌ها اهمیت می‌دهند و برای درک نیازها، خواسته‌ها و احساسات دیگران دارای حسی بسیار قوی هستند. قادر به تشخیص و دیدن خوبی‌های دیگران هستند و صمیمانه از ایشان تعریف و آن‌ها را تشویق می‌کنند. خدمت به دیگران برای‌شان مهم است اما نگهداری و توجه به خودشان در اولویت بالاتری قرار دارد. به‌ درستی می‌دانند که حد و مرز دادن و گرفتن کجاست، در نتیجه ارزش خودشان را از درون خود می‌دانند و خارج از خود در جستجوی آن نیستند. آن‌ها مشغول رشد و پرورش، سخاوتمندی و بخشش یک عشق واقعی به دیگران هستند.</li>
-                        <li><strong>در سطح نامتعادل:</strong> از طریق کمک کردن، به شدت خواهان توجه دیگرانند و ترس دارند که از مناسبات اجتماعی کنار گذاشته شوند. آن‌ها هلاک همه‌اند. این تیپ در بیشتر مواقع، خودش را قربانی دیگران می‌کند. چون احساس می‌کند دیگران ارزشی برای او قایل نیستند، حس پشیمانی و ندامت از گذشت و فداکاری‌های خود بر او غالب می‌شود. حرف دلش را آن‌طور که می‌خواهد نمی‌تواند بزند. همیشه انتظار دارد که دیگران همه چیز را بدانند. چون او درک روشنی از خودش ندارد و با خود شفاف نیست، این شفافیت را از دیگران انتظار دارد. همیشه کاری می‌کند که دیگران را دست‌کاری و آن‌ها را در جهت نیت‌های خود استثمار عاطفی کند. بسیار متظاهر و فریبکار می‌شود و برای به دست آوردن, به ریاکاری و دروغ می‌پردازد.</li>
-                    </ul>
-                    <h3>جملات مرتبط با توسعه سطوح تیپ ۲</h3>
-                    <ul>
-                        <li><strong>پیام دوران کودکی (کلام شکل‌دهنده تیپ):</strong> "این خوب نیست که به نیازهای خودت اهمیت بدهی."</li>
-                        <li><strong>پیام تعدیل‌کننده تیپ:</strong> "تو همین‌طوری خواستنی و دوست‌ داشتنی هستی."</li>
-                        <li><strong>ترس بنیادی:</strong> نالایق بودن و دوست داشته نشدن.</li>
-                        <li><strong>رفتار در زمان فعال شدن ترس (منیت):</strong> تملق.</li>
-                        <li><strong>تجربه درونی در زمان فعال شدن ترس (هوای نفس):</strong> غرور.</li>
-                        <li><strong>هدیه تولد:</strong> مهرورزی (در سطوح متعادل به شکل عشق‌ بدون شرط ابراز می‌شود).</li>
-                        <li><strong>ابراز ناآگاهانه آن:</strong> جلب محبت دیگران با از خود گذشتگی.</li>
-                        <li><strong>اجتناب از:</strong> دیده شدن نیازهایش.</li>
-                        <li><strong>حل کردن تضاد با:</strong> محبت کردن.</li>
-                        <li><strong>شکایت پنهانی:</strong> "من همیشه دیگران را دوست دارم، هرچند آن‌ها آن‌طور که باید قدر مرا نمی‌دانند."</li>
-                        <li><strong>انگاشت نوپدید (در سطوح متعادل):</strong> "قدردانم که هستی با نیروی عشق پدید آمده است و مجرایی مدام و لبریز از منبع بی‌پایان عشق هستم."</li>
-                    </ul>
-                </div>
-            </section>
+        <!-- Type 5 Card -->
+        <div class="type-card" id="type-5">
+            <h2>تیپ ۵: متفکر (The Thinker)</h2>
+            <div class="content">
+                <h3>شرح تیپ ۵</h3>
+                <ul>
+                    <li><strong>فضای کودکی:</strong> این افراد در کودکی احساس عدم امنیت داشته‌اند و برای جبران آن به دنیای درونی خود پناه برده‌اند. آن‌ها به دنبال تنهایی و کسب مهارت در زمینه‌های خاص بوده‌اند. از همان کودکی، احساسات خود را نادیده می‌گیرند تا بر تشویش‌های درونی خود غلبه کنند.</li>
+                    <li><strong>چارچوب‌ها و جهان‌بینی:</strong> مرکز محوری تیپ پنج "آزمندی" است. آن‌ها باور دارند که جهان منابع و حمایت محدودی دارد. برای مقابله با این حس، به انباشت دانش روی می‌آورند. دانش و دانستگی به آن‌ها اعتماد به نفس می‌دهد.</li>
+                </ul>
+                <h3>سطوح تیپ ۵</h3>
+                <ul>
+                    <li><strong>در سطح میانی:</strong> افراد تیپ پنج بسیار کنجکاوند و می‌خواهند بدانند به طور کلی آنچه مشاهده می‌کنند، چگونه است. در واقع چون خیلی به توانایی خود برای انجام کار مطمئن نیستند، به دنیای درون روی می‌آورند. زیرا می‌دانند در این زمینه قادر و توانا هستند. افراد این تیپ در حالی‌ که برای حفظ داشته‌های خود آزمندند، خساست هم دارند. این افراد نیاز به استقلال دارند و برای اینکه نیازهای محدود خود را حفظ کنند و کمتر به زحمت بیافتند، به خساست و استفاده مطلوب از منابع محدود خود گرفتار می‌شوند. به دلیل پس‌زدن جهان پیرامون، بیشتر دوست دارند با خود تنها باشند و به کسب دانش و انرژی بپردازند.</li>
+                    <li><strong>در سطح متعادل:</strong> آن‌ها در این سطح، یک دانشنامه تجربی متحرکند. دارای ذهن تحلیل‌گر بسیار قوی هستند و قادرند محیط اطراف را با ذکاوت و باریک‌بینی خاصی مشاهده کنند. برای دستیابی به اطلاعات و دانش مورد نظرشان، قدرت تمرکز و پشتکار بسیاری دارند. علاوه بر دانشی که دارند، عملگرا نیز هستند و از آن در عمل استفاده می‌کنند و به این ترتیب خرد به دست می‌آورند. انسان‌هایی حساس هستند و راه و روش‌های کاملا جدید و نوینی برای انجام دادن کارها و درک و فهم عمیق موضوعات دارند. واقع‌گرایی در آن‌ها بالا است و خیال‌پردازی ندارند. درک‌شان از محیط پیرامون بسیار خوب است. مشاهده‌گر صادقی هستند که رویدادها و چیزها را همان‌طور که هست می‌بینند.</li>
+                    <li><strong>در سطح نامتعادل:</strong> افراد این تیپ از واقعیت‌های محیط و روابط اجتماعی فاصله زیادی می‌گیرند. از نظر روحی و روانی، انسان‌های پایداری نیستند. منفی‌گرایی شدید و افسردگی در آن‌ها مشهود است. اگرچه از خشونت دیگران واهمه دارند، خودشان انسان‌های بسیار خشنی هستند. از ایده‌ها و وسوسه‌های ذهنی خود وحشت دارند و این وحشت از خود، باعث می‌شود که دچار آشوب و اختلال حواس شوند. یک نوع نخوت روشنفکرانه دارند و بیشتر تلاش دارند به بقیه بگویند که خیلی چیزها می‌دانند. گوشه‌گیر و منزوی می‌شوند. احساسات خود را مهار و خودشان را از واقعیت و زندگی جاری دور می‌کنند و از همه چیز و همه کس جدا می‌افتند.</li>
+                </ul>
+                <h3>جملات مرتبط با توسعه سطوح تیپ ۵</h3>
+                <ul>
+                    <li><strong>پیام دوران کودکی (کلام شکل‌دهنده تیپ):</strong> "این خوب نیست که چیزی را ندانی."</li>
+                    <li><strong>پیام تعدیل‌کننده تیپ:</strong> "توانایی‌های تو کافیست."</li>
+                    <li><strong>ترس بنیادی:</strong> بی‌کفایتی و ندانستن.</li>
+                    <li><strong>رفتار در زمان فعال شدن ترس (منیت):</strong> ناخن‌خشکی.</li>
+                    <li><strong>تجربه درونی در زمان فعال شدن ترس (هوای نفس):</strong> آزمندی.</li>
+                    <li><strong>هدیه تولد:</strong> یادگیری (در سطوح متعادل به شکل خرد ابراز می‌شود).</li>
+                    <li><strong>ابراز ناآگاهانه آن:</strong> جمع‌آوری دانش‌های پراکنده.</li>
+                    <li><strong>اجتناب از:</strong> نادانی.</li>
+                    <li><strong>حل کردن تضاد با:</strong> تجزیه و تحلیل.</li>
+                    <li><strong>شکایت پنهانی:</strong> "من آنقدر باهوشم که هیچ‌کس نمی‌تواند مرا درک کند."</li>
+                    <li><strong>انگاشت نوپدید (در سطوح متعادل):</strong> "قدردانم که خرد جاری در هستی را دریافت می‌کنم و هر لحظه به بهترین شکل بودنم هدایت می‌شوم."</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Type 6 Card -->
+        <div class="type-card" id="type-6">
+            <h2>تیپ ۶: پشتیبان (The Loyalist)</h2>
+            <div class="content">
+                <h3>شرح تیپ ۶</h3>
+                <ul>
+                    <li><strong>فضای کودکی:</strong> بزرگ‌ترین ترس این افراد در کودکی، نداشتن حامی و تکیه‌گاه است. آن‌ها به دلیل حمایت ناکافی یا سخت‌گیری والدین، حس عدم امنیت و ترس از اعتماد کردن به دیگران را دارند. این حس باعث می‌شود که به دنبال یک حامی یا سیستم امنیتی بگردند.</li>
+                    <li><strong>چارچوب‌ها و جهان‌بینی:</strong> کلمات کلیدی تیپ شش، شک، ترس و بی‌اعتمادی است. آن‌ها آینده را نامشخص می‌بینند و تصویرهای وحشتناکی برای آن می‌سازند. برای کاهش اضطراب، به سازماندهی کارها و پیش‌بینی آینده روی می‌آورند. این افراد به دوستان، عقاید و سیستم‌ها بسیار وفادارند.</li>
+                </ul>
+                <h3>سطوح تیپ ۶</h3>
+                <ul>
+                    <li><strong>در سطح میانی:</strong> به جای اینکه کاری را انجام دهد بیشتر در مورد آن فکر می‌کند و دلیلش این است که در انجام کارهایش ترس و تردید دارد. در تیپ شش، گروهی هستند که به خاطر عدم فعالیت به شدت نگران می‌شوند ولی واکنش آن‌ها به این شرایط، روبرو شدن با ترس و جنگیدن است. در حالی که گروه دوم، کنار می‌کشند. آن‌ها آرزوهای بزرگی دارند ولی در انجام کارها تمام‌کننده نیستند و در نتیجه کارهای ناتمام زیادی دارند. موفقیت برای آن‌ها تهدیدآمیز است، زیرا تردید‌هایشان را بیشتر می‌کند. معمولا نقش فردی ضعیف را خوب بازی می‌کنند و در روابط خود با وفا می‌باشند.</li>
+                    <li><strong>در سطح متعادل:</strong> دوست داشتنی هستند و در ارتباطات خود بسیار وفادارند. در این حالت به دیگران اهمیت می‌دهند و به خودشان و دیگران اعتماد می‌کنند. دوستانی محبوب و خوش‌خو هستند که افراد، احساس گرم و محترمانه‌ای نسبت به آن‌ها دارند. در عین حال که با اطرافیان مشارکت و همزیستی دارند، استقلال خود را حفظ می‌کنند. خون‌گرم، معاشرتی و قادر به درک واکنش‌های احساسی دیگران هستند. بسیار جذاب، دوست داشتنی، محبوب و مهربان هستند. به دیگران اعتماد می‌کنند و با آن‌ها پیوند عاطفی دارند و روابط همیشگی همراه با اتحاد با آن‌ها برقرار می‌کنند.</li>
+                    <li><strong>در سطح نامتعادل:</strong> او از ترس اینکه امنیت و آسایش خویش را خراب نکند، همیشه هراسان و دست‌پاچه است. همیشه می‌خواهد مچ کسی را بگیرد. غیر قابل پیش‌بینی است و طوری رفتار می‌کند که بعضی وقت‌ها انگار اطرافیانش را نمی‌شناسد. تفرقه ایجاد می‌کند، فضایل دیگران را نادیده می‌گیرد و آن‌ها را تحقیر و سرزنش می‌کند. بدبینی زیادی دارد، مشکوک است و همیشه فکر می‌کند که کاسه‌ای زیر نیم کاسه است. به همه چیز واکنش شدید دارد، چون خود را بسیار ناتوان می‌پندارد و ناخودآگاه حالت‌های تهاجمی از خود بروز می‌دهد. احساس آزاردیدگی و اذیت شدن دارد و فکر می‌کند آن‌ها را از دیگران دریافت می‌کند.</li>
+                </ul>
+                <h3>جملات مرتبط با توسعه سطوح تیپ ۶</h3>
+                <ul>
+                    <li><strong>پیام دوران کودکی (کلام شکل‌دهنده تیپ):</strong> "این خوب نیست که به خودت اطمینان کنی."</li>
+                    <li><strong>پیام تعدیل‌کننده تیپ:</strong> "تو همیشه خودت می‌توانی موضوع خود را حل کنی."</li>
+                    <li><strong>ترس بنیادی:</strong> ناامن بودن و حامی نداشتن.</li>
+                    <li><strong>رفتار در زمان فعال شدن ترس (منیت):</strong> بزدلی.</li>
+                    <li><strong>تجربه درونی در زمان فعال شدن ترس (هوای نفس):</strong> تشویش.</li>
+                    <li><strong>هدیه تولد:</strong> تیزبینی (در سطوح متعادل به شکل بصیرت ابراز می‌شود).</li>
+                    <li><strong>ابراز ناآگاهانه آن:</strong> موشکافی بیش از حد نسبت به موضوعات.</li>
+                    <li><strong>اجتناب از:</strong> عدم شفافیت.</li>                    <li><strong>حل کردن تضاد با:</strong> جستجو و تجسس.</li>
+                    <li><strong>شکایت پنهانی:</strong> "من همیشه وظیفه خود را انجام می‌دهم و می‌توان به من اعتماد کرد ولی دیگران این‌گونه نیستند."</li>
+                    <li><strong>انگاشت نوپدید (در سطوح متعادل):</strong> "قدردانم که هستی با سخاوتمنـدی حمایتم می‌کند و همیشـه در امانم چرا که ذات ط‌ـبیعت, فناناپذیر است."</li>
+                </ul>
+            </div>
+        </div>
 
-            <!-- Type 3 Card -->
-            <section class="card" id="type-3">
-                <h2>تیپ ۳: موفقیت‌گرا (The Success-oriented)</h2>
-                <div class="content">
-                    <h3>شرح تیپ ۳</h3>
-                    <ul>
-                        <li><strong>فضای کودکی:</strong> این افراد در دوران کودکی به خاطر دستاوردهایشان دیده و تأیید شده‌اند، نه به خاطر خودشان. آن‌ها آموخته‌اند که اعتبار و تأیید درونی را با موفقیت‌های بیرونی به دست آورند. به طور ناخودآگاه شرطی شده‌اند که تا زمانی ارزشمند هستند که کاری انجام دهند و موفقیتی داشته باشند.</li>
-                        <li><strong>چارچوب‌ها و جهان‌بینی:</strong> تیپ سه به طور مداوم به دنبال موفقیت‌های جدید است. آن‌ها برای رسیدن به اهداف خود، نقش‌های مختلفی بازی می‌کنند و تصویری موفق از خود می‌سازند. این افراد با احساسات خود بیگانه هستند و آن‌ها را مانعی برای پیشرفت می‌دانند. هویت خود را با موفقیت‌هایشان یکی می‌دانند.</li>
-                    </ul>
-                    <h3>سطوح تیپ ۳</h3>
-                    <ul>
-                        <li><strong>در سطح میانی:</strong> افراد تیپ سه به خوبی می‌دانند که برای جلب نظر دیگران چه کارهایی باید انجام دهند و به راحتی می‌توانند خود را با شرایط وفق دهند و اوضاع را با خواسته‌های خودشان منطبق سازند. چون کارایی برای این افراد از اولویت برخوردار است در نتیجه در یک زمان چندین پروژه یا کار را انجام می‌دهند. آن‌ها همیشه لیستی از کارهایی که باید انجام بدهند، دارند. این افراد برای اثربخشی بر کاری که می‌کنند‌، ‌دست به کنترل شرایط می‌زنند و تا زمانی که شرایط در کنترل آن‌ها است‌، کارایی بالایی دارند و در ضمن احساس امنیت و آرامش هم می‌کنند. تیپ سه اساسا رقابت‌طلب است و خود را در رقابت‌ها جستجو می‌کند و نسبت به تیپ‌های دیگر از اعتماد به نفس بالایی برخوردار است.</li>
-                        <li><strong>در سطح متعادل:</strong> انگیزه آن‌ها برای رشد فردی و موثر و مفید بودن، بسیار قوی است. از درون سوق داده می‌شوند و راهنمای درونی دارند و ارزش‌های مادی و معنوی خود را باور دارند. همان‌طور که به نظر می‌رسند، معتبر و روراست هستند. به طور معمول جذاب، پرانرژی و دوست‌داشتنی می‌باشند. توانمندی بالا، بخشی از بودن طبیعی آن‌ها است و برای جامعه و محیط‌ خود هم مفید و موثر هستند. آن‌ها بهترین هر آنچه که می‌توانند باشند، هستند. نسبت به تحولات بیرونی، واقع‌بین هستند. در کارهای خود اعتماد به نفس بالایی دارند و با انعطاف‌پذیری بسیار با چالش‌های زندگی روبرو می‌شوند. آدم‌های اثربخشی هستند و همیشه در حال یادگیری‌‌های جدیدند. انرژی خیلی بالایی دارند و به زودی خسته نمی‌شوند. خیلی عملیاتی هستند و قدرت اجرایی بالایی دارند.</li>
-                        <li><strong>در سطح نامتعادل:</strong> سعی دارند به خود و دیگران نشان دهند که انسان برتری هستند. به هیچ وجه حاضر نیستند که با عواطف خود رو‌به‌رو شوند. خود‌شیفته هستند و نسبت به موفقیت دیگران بسیار آزمند و حریص‌اند. برای همین حاضرند دست به هر کاری بزنند تا از توهم خود‌برتربینی‌شان حفاظت کنند و در جایگاه بالاتری که مد نظرشان است بمانند. فریب‌کارند و در روابط اجتماعی خود نقاب‌های بسیاری بر چهره می‌زنند؛ در نتیجه افراد قابل اعتمادی به حساب نمی‌آیند. کینه‌ای و انتقام‌جو هستند. سعی در تخریب و برهم‌زدن شادی دیگران دارند. بی‌رحم و عقده‌ای هستند و در از بین‌ بردن هر آنچه که آن‌ها را به یاد اشتباهات، کمبودها و عدم موفقیت‌های‌شان می‌اندازد، اصرار زیاد دارند. به شدت رقابتی هستند و فرمول آن‌ها معمولا برد-باخت است. آن‌ها برای موفق‌ شدن دست به هر کاری می‌زنند.</li>
-                    </ul>
-                    <h3>جملات مرتبط با توسعه سطوح تیپ ۳</h3>
-                    <ul>
-                        <li><strong>پیام دوران کودکی (کلام شکل‌دهنده تیپ):</strong> "این خوب نیست که دستاوردهای متعدد و فوق‌العاده‌ای نداشته باشی."</li>
-                        <li><strong>پیام تعدیل‌کننده تیپ:</strong> "تو برای وجود خودت ارزشمند هستی."</li>
-                        <li><strong>ترس بنیادی:</strong> بی‌ارزش و بدون دستاورد بودن.</li>
-                        <li><strong>رفتار در زمان فعال شدن ترس (منیت):</strong> فخرفروشی.</li>
-                        <li><strong>تجربه درونی در زمان فعال شدن ترس (هوای نفس):</strong> تزویر.</li>
-                        <li><strong>هدیه تولد:</strong> پشتکار (در سطوح متعادل به شکل توانمندی ابراز می‌شود).</li>
-                        <li><strong>ابراز ناآگاهانه آن:</strong> موفقیت‌جویی افراطی.</li>
-                        <li><strong>اجتناب از:</strong> دیده شدن شکست.</li>
-                        <li><strong>حل کردن تضاد با:</strong> سماجت کردن.</li>
-                        <li><strong>شکایت پنهانی:</strong> "من انسانی بسیار لایق هستم و دیگران به من حسادت می‌کنند."</li>
-                        <li><strong>انگاشت نوپدید (در سطوح متعادل):</strong> "قدردانم که در جهانی زنده و پویا زندگی می‌کنم و می‌توانم هر آنچه آرزوی قلبیم است را به دست آرم."</li>
-                    </ul>
-                </div>
-            </section>
+        <!-- Type 7 Card -->
+        <div class="type-card" id="type-7">
+            <h2>تیپ ۷: پرشور (The Enthusiast)</h2>
+            <div class="content">
+                <h3>شرح تیپ ۷</h3>
+                <ul>
+                    <li><strong>فضای کودکی:</strong> این افراد در دوران کودکی احساس گسستگی و محرومیت عاطفی از مادر داشته‌اند. برای فرار از این احساسات، تصمیم گرفته‌اند به جای غم و رنج، به دنبال لذت‌ها و تجربه‌های جدید بروند. آن‌ها با استفاده از تخیل فعال خود، برنامه‌های زیادی برای آینده دارند.</li>
+                    <li><strong>چارچوب‌ها و جهان‌بینی:</strong> تیپ هفت با محدود کردن خود مشکل دارد و به هر چیزی که فکر می‌کند، بدون تعمق عمل می‌کند. آن‌ها احساس توخالی بودن دارند و سعی می‌کنند با داشتن تجربه‌های زیاد این کمبود را جبران کنند. کلمات کلیدی آن‌ها لذت‌جویی و خیال‌پردازی است.</li>
+                </ul>
+                <h3>سطوح تیپ ۷</h3>
+                <ul>
+                    <li><strong>در سطح میانی:</strong> او دوست دارد آزاد زندگی کند و محدودیتی نداشته باشد، تا بتواند به دنبال لذت‌های خود از زندگی باشد. چون هدفش از کار و فعالیت، لذت‌جویی است، بسیاری از مواقع در نیمه‌های کار آن را رها می‌کند. همیشه لذت‌های ذهنی برای خودش ایجاد می‌کند و این لذت‌های ذهنی با آینده‌نگری و خیال‌پردازی همراه است. در نتیجه وقتی چیزی را خیال می‌کند و به مرحله ایده در‌می‌آورد، می‌خواهد همان را به واقعیت تبدیل کند. به دلیل لذت‌جویی زیاد، به خود توجه دارد و نمی‌تواند دیگران را درک کند. اعتماد‌ به‌ نفس بالایی دارد و فکر می‌کند دارای توان بالایی است. از این رو افراد این تیپ معمولا از‌ خود‌راضی و خود‌شیفته هستند.</li>
+                    <li><strong>در سطح متعادل:</strong> انسان‌هایی مسئول و آزاد‌منش هستند. در مورد تجربه‌های خود بسیار پرشور و شوق می‌باشند. افرادی کنجاو، جست‌وجوگر و پیشرو هستند. آن‌ها انسان‌هایی تمام‌کننده، با استعدادهای گوناگون، پربار و عملگرا هستند. همچنین آدم‌هایی خوش‌برخورد و شوخ‌طبع هستند. ضمن این که برون‌گرا، شاد و سرزنده‌اند، زمان‌هایی را به خلوت و تنهایی با خود می‌گذرانند. خودانگیخته، خود‌جوش و مشتاق هستند و با تمام وجود، زندگی را تجربه می‌کنند. قدرت تخیلی قوی دارند و نوآور هستند. ایده‌های خود را انجام می‌دهند و به نتیجه می‌رسانند. آن‌ها بابت فرصت‌ها و موهبت‌هایی که دارند شامل امکانات و روابط خود قدر‌دان و سپاس‌گزارند.</li>
+                    <li><strong>در سطح نامتعادل:</strong> افراد تیپ هفت در مرحله ناسالم رشد خود، به آسانی و خیلی زود واکنش نشان می‌دهند. از تسکین و فرونشاندن نگرانی‌های خود ناامید و خسته می‌شوند. بدون انگیزه و فکر قبلی و بسیار بچه‌گانه عمل می‌کنند و خود‌شیفته‌اند. نمی‌دانند چه وقت باید دست از کارهایی که خواهان و مشغول آن هستند، بکشند. برای همین به آن‌ها معتاد می‌شوند و خسارات و هزینه‌های سنگینی را بابت آن پرداخت می‌کنند. از هم گسیخته می‌شوند و در مسیر سقوط قرار می‌گیرند. پر‌توقع، بی‌تربیت، خشن، گستاخ و بد‌‌زبان می‌شوند و ناسزا می‌گویند و رفتارهای توهین‌آمیز دارند. بی‌عاطفه می‌شوند و به خوبی می‌توانند با خشونت و رفتار غضبناک، دیگران را تحقیر کنند و به آن‌ها زور بگویند.</li>
+                </ul>
+                <h3>جملات مرتبط با توسعه سطوح تیپ ۷</h3>
+                <ul>
+                    <li><strong>پیام دوران کودکی (کلام شکل‌دهنده تیپ):</strong> "این خوب نیست که همیشه دنبال خوش‌گذرانی باشی."</li>
+                    <li><strong>پیام تعدیل‌کننده تیپ:</strong> "تو لایق شاد بودن و تفریح‌ کردن هستی."</li>
+                    <li><strong>ترس بنیادی:</strong> محروم شدن و بدون امکانات بودن.</li>
+                    <li><strong>رفتار در زمان فعال شدن ترس (منیت):</strong> آینده‌بازی.</li>
+                    <li><strong>تجربه درونی در زمان فعال شدن ترس (هوای نفس):</strong> تنوع‌طلبی.</li>
+                    <li><strong>هدیه تولد:</strong> ایده‌پردازی (در سطوح متعادل به شکل نوآوری ابراز می‌شود).</li>
+                    <li><strong>ابراز ناآگاهانه آن:</strong> خیال‌پردازی و سیر در آینده.</li>
+                    <li><strong>اجتناب از:</strong> درد و رنج.</li>
+                    <li><strong>حل کردن تضاد با:</strong> خوش‌بینی و بی‌توجهی.</li>
+                    <li><strong>شکایت پنهانی:</strong> "من شاد هستم و اگر دیگران آن ‌چیزهایی را که می‌خواهم به من بدهند، شادتر هم می‌شوم."</li>
+                    <li><strong>انگاشت نوپدید (در سطوح متعادل):</strong> "قدردانم که هستی غنی و بی‌پایان است و این‌‌چنین است که مملو از فرصت‌های بی‌پایان و لذایذ ناب هستم."</li>
+                </ul>
+            </div>
+        </div>
 
-            <!-- Type 4 Card -->
-            <section class="card" id="type-4">
-                <h2>تیپ ۴: فردگرا (The Individualist)</h2>
-                <div class="content">
-                    <h3>شرح تیپ ۴</h3>
-                    <ul>
-                        <li><strong>فضای کودکی:</strong> این افراد در کودکی احساس طرد شدن و تنهایی داشته‌اند و به دنبال یک ناجی می‌گشته‌اند. آن‌ها حس می‌کنند چیزی در خودشان اشتباه است و چیزی را کم دارند. این حس موجب می‌شود که خود را کاملاً متفاوت با دیگران بدانند.</li>
-                        <li><strong>چارچوب‌ها و جهان‌بینی:</strong> تیپ چهار خود را فردی استثنایی می‌داند و به دنبال خاص بودن است. انگیزه اصلی آن‌ها حسادت است. آن‌ها فکر می‌کنند دیگران خوشحال‌تر هستند و دنیا را در گذشته جستجو می‌کنند. این تیپ هویت خود را با یک زخم یا کمبود بنیادی تعریف می‌کند.</li>
-                    </ul>
-                    <h3>سطوح تیپ ۴</h3>
-                    <ul>
-                        <li><strong>در سطح میانی:</strong> تیپ چهار ظاهری متفاوت به خود می‌گیرد تا این کمبود درونی را به شکلی کاهش دهد و گاهی اوقات سعی می‌کند کمبود خود را با یک ظاهر فرهیخته بپوشاند. آداب و حرکات مودبانه و تشریفات خاصی دارد. عتیقه‌جات همیشه تیپ چهار را جذب می‌کند که در اینجا هم پوششی برای کمبود‌هایش است. موضوعات مربوط به گذشته ذهن او را اشغال کرده است و فرصتی برای پرداختن به آینده ندارد. وقتی به بعضی از آرزوهایش می‌رسد‌ از آن دلسرد می‌شود، چون زخم کهنه‌اش التیام نمی‌یابد. انگار جستجو برایش بیشتر از داشتن اهمیت دارد. همیشه سعی می‌کند از نظر عقیده، داشته‌ها و آرزوها فراتر از زندگی عادی برود و همین باعث وجود خلاقیت و دید زیباشناسانه در او می‌شود.</li>
-                        <li><strong>در سطح متعادل:</strong> آن‌ها در روابط خود گرم هستند. افرادی درست و نیکوکارند. شخصیت خود را کندوکاو می‌کنند و صادقانه با آن مواجه می‌شوند. پاک سرشت هستند و یک منش درونی دارند که می‌توانند حال دیگران را تشخیص دهند. آن‌ها می‌توانند امور شخصی خود را به شکلی هنری، زیبا و مطلوب نمایش دهند. عمیقا خلاق‌اند و در این خلاقیت، دیدگاه‌های شخصی و جهانی‌شان را ابراز می‌کنند که حتی ممکن است به یک اثر هنری فوق‌العاده تبدیل شود یا به هر شکل دیگری بروز پیدا کند. به احساسات و انگیزه‌های درونی‌ خود آگاه‌ هستند و احساسات خود را می‌پذیرند. نسبت به خودشان و دیگران حساس‌اند و در‌ این زمینه شهود دارند. حمایت‌گر هستند و به دیگران کمک می‌کنند.</li>
-                        <li><strong>در سطح نامتعادل:</strong> افکار خودبرتربینی پیدا می‌کنند و فکر می‌کنند از دیگران متمایز و با آن‌ها متفاوتند. احساس می‌کنند شیوه‌ زندگی‌ دیگران بی‌معناست و مایل نیستند که مانند دیگران زندگی کنند. افسردگی و احساس سردی نسبت به زندگی دارند. وقتی رویا و تخیلات آن‌ها با شکست مواجه می‌شود، نسبت به خود و دیگرانی که از آن‌ها حمایت نکرده‌اند، بسیار خشمگین می‌شوند و سعی می‌کنند شدت خشم خود را بروز ندهند. به همین دلیل بیشتر کناره‌گیر می‌شوند که اضطراب و افسردگی پیامد آن است. از دنیا طلبکارند. نسبت به خود دلسوزی و ترحم دارند و حسادت به دیگران, حس زیاده خواهی‌شان را به جلو می‌راند. در مقابل ارضای خواسته‌ها و امیال‌شان ناتوان هستند. به طور فزاینده‌ای غیر عملی و غیر اجرایی می‌شوند و توانایی خلق و تولید را از دست می‌دهند.</li>
-                    </ul>
-                    <h3>جملات مرتبط با توسعه سطوح تیپ ۴</h3>
-                    <ul>
-                        <li><strong>پیام دوران کودکی (کلام شکل‌دهنده تیپ):</strong> "این خوب نیست که مانند همه باشی."</li>
-                        <li><strong>پیام تعدیل‌کننده تیپ:</strong> "تو همیشه جایگاه خودت را داری."</li>
-                        <li><strong>ترس بنیادی:</strong> متمایز نبودن و بی‌هویتی.</li>
-                        <li><strong>رفتار در زمان فعال شدن ترس (منیت):</strong> غم‌زدگی.</li>
-                        <li><strong>تجربه درونی در زمان فعال شدن ترس (هوای نفس):</strong> حسادت.</li>
-                        <li><strong>هدیه تولد:</strong> خلاقیت (در سطوح متعادل به شکل شهود ابراز می‌شود).</li>
-                        <li><strong>ابراز ناآگاهانه آن:</strong> اصرار به تمایز.</li>
-                        <li><strong>اجتناب از:</strong> معمولی و متوسط بودن.</li>
-                        <li><strong>حل کردن تضاد با:</strong> هوشیاری و حساس بودن.</li>
-                        <li><strong>شکایت پنهانی:</strong> "من واقعا مناسب این جایگاه نیستم و با همه متفاوت هستم، اما دیگران این را متوجه نمی‌شوند."</li>
-                        <li><strong>انگاشت نوپدید (در سطوح متعادل):</strong> "قدردانم که هستی یکتا و منحصر به فرد است و این‌گونه است که من هم، آینه تمام‌نمای آن هستم."</li>
-                    </ul>
-                </div>
-            </section>
+        <!-- Type 8 Card -->
+        <div class="type-card" id="type-8">
+            <h2>تیپ ۸: رهبر (The Leader)</h2>
+            <div class="content">
+                <h3>شرح تیپ ۸</h3>
+                <ul>
+                    <li><strong>فضای کودکی:</strong> بیشتر افراد تیپ هشت در دوران کودکی، این احساس را داشته‌اند که باید مانند یک فرد بالغ رفتار کنند و در نتیجه مسئولیت‌های خانوادگی متعددی به عهده گرفته‌اند. برخی از افراد این گروه از سنین کودکی احساس بلوغ و بزرگی می‌کنند، چون از لحاظ مالی یا در جایگاه والد، برای حفاظت و رشد دیگر افراد یا فرزندان خانواده، مسئول کمک به خانواده می‌شوند. شاید پدر خانواده به دلایل فیزیکی یا دلایل دیگر غایب یا خانواده درگیر بلایای دیگری باشد.</li>
+                    <li><strong>چارچوب‌ها و جهان‌بینی:</strong> همانند تیپ چهار، تیپ هشت نیز معتقد است که چیزی در زندگی‌اش کم است. ولی بر عکس تیپ چهار، این تیپ با این کمبود برخورد و سعی می‌کند شرایط را برای تامین این کمبود در کنترل خود درآورد. آن‌ها معتقدند شرایطی که به وجود می‌آید و بی‌عدالتی که گسترش پیدا می‌کند، مسبب و عواملی دارد. از این نظر خشم دارند و معتقد هستند که خداوند در مورد آن‌ها کم گذاشته است.</li>
+                </ul>
+                <h3>سطوح تیپ ۸</h3>
+                <ul>
+                    <li><strong>در سطح میانی:</strong> احتمالا این تیپ در خردسالی شاهد از بین رفتن معصومیت و ایجاد نابرابری و ظلم بوده است. بنابراین خشم فروخورده‌ای در وجودش است و تثبیت قدرت شخصی خود را به اشتباه، حمایت و دفاع از خود و دیگران قلمداد می‌کند. به عقیده و نظر دیگران اعتماد ندارد و معمولا می‌گوید "راه من یا راه هیچ‌کس". به دلیل داشتن فکر همه یا هیچ، در خود هیچ نقطه ضعفی نمی‌بیند و در جهت حمایت از خود و دیگران تا جایی‌ که لازم است، اعمال قدرت می‌کند.</li>
+                    <li><strong>در سطح متعادل:</strong> آن‌ها به خودشان متکی هستند و استقلال مالی دارند. خوددار و سخاوتمند هستند و صراحت لهجه بالایی دارند. شجاع هستند و در مواجهه با خطرات، بسیار توانا برخورد می‌کنند. اهل عمل، دارای انگیزه‌های قوی درونی و راسخ هستند. چالش‌های زندگی را دوست دارند و به طور طبیعی پیشرو، پیش‌کسوت و رهبر هستند و در اجرای کارهای در دست انجام، مهارت و توانایی بسیاری از خود نشان می‌دهند. برای هر آنچه می‌خواهند و نیاز دارند، ایستادگی می‌کنند.</li>
+                    <li><strong>در سطح نامتعادل:</strong> افراد تیپ هشت در سطح نامتعادل، احساس می‌کنند به آن‌ها خیانت شده است. فکر می‌کنند که آنان بالاتر از قانون هستند و برای همین قوانین را محترم نمی‌شمارند. در این مرحله، بروز احساسات و عواطف در آن‌ها نا‌محسوس می‌شود و می‌توانند به شدت هرگونه احساس دیگر خود را مانند غضب, گناه, ترس, شرم یا ناتوانی, در خود پنهان کنند. اگر در معرض خطر قرار بگیرند, از هیچ تلاشی برای کنترل دیگران چشم‌پوشی نمی‌کنند و به طرز وحشیانه‌ای دمار از روزگار دیگران در می‌آورند.</li>
+                </ul>
+                <h3>جملات مرتبط با توسعه سطوح تیپ ۸</h3>
+                <ul>
+                    <li><strong>پیام دوران کودکی (کلام شکل‌دهنده تیپ):</strong> "این خوب نیست که ضعیف و آسیب‌پذیر باشی."</li>
+                    <li><strong>پیام تعدیل‌کننده تیپ:</strong> "تو قوی هستی و در امانی."</li>
+                    <li><strong>ترس بنیادی:</strong> صدمه‌ دیدن، کنترل‌ شدن یا ضعیف بودن.</li>
+                    <li><strong>رفتار در زمان فعال شدن ترس (منیت):</strong> تلافی‌جویی.</li>
+                    <li><strong>تجربه درونی در زمان فعال شدن ترس (هوای نفس):</strong> زیاده‌خواهی.</li>
+                    <li><strong>هدیه تولد:</strong> قدرت (در سطوح متعادل به شکل کاریزما ابراز می‌شود).</li>
+                    <li><strong>ابراز ناآگاهانه آن:</strong> جنگ و جدل و کنترل کردن.</li>
+                    <li><strong>اجتناب از:</strong> ناتوانی و ضعف.</li>
+                    <li><strong>حل کردن تضاد با:</strong> مواجهه و ممارست.</li>
+                    <li><strong>شکایت پنهانی:</strong> "من مبارزه می‌کنم و برای حفظ امنیت خود و نزدیکانم اجازه نمی‌دهم دیگران از من سو‌ء استفاده کنند."</li>
+                    <li><strong>انگاشت نوپدید (در سطوح متعادل):</strong> "قدردانم که هستی قادر مطلق و جاودانه است و این‌گونه است که لبریز از قدرت و زندگی جاودانه‌ هستم."</li>
+                </ul>
+            </div>
+        </div>
 
-            <!-- Type 5 Card -->
-            <section class="card" id="type-5">
-                <h2>تیپ ۵: متفکر (The Thinker)</h2>
-                <div class="content">
-                    <h3>شرح تیپ ۵</h3>
-                    <ul>
-                        <li><strong>فضای کودکی:</strong> این افراد در کودکی احساس عدم امنیت داشته‌اند و برای جبران آن به دنیای درونی خود پناه برده‌اند. آن‌ها به دنبال تنهایی و کسب مهارت در زمینه‌های خاص بوده‌اند. از همان کودکی، احساسات خود را نادیده می‌گیرند تا بر تشویش‌های درونی خود غلبه کنند.</li>
-                        <li><strong>چارچوب‌ها و جهان‌بینی:</strong> مرکز محوری تیپ پنج "آزمندی" است. آن‌ها باور دارند که جهان منابع و حمایت محدودی دارد. برای مقابله با این حس، به انباشت دانش روی می‌آورند. دانش و دانستگی به آن‌ها اعتماد به نفس می‌دهد.</li>
-                    </ul>
-                    <h3>سطوح تیپ ۵</h3>
-                    <ul>
-                        <li><strong>در سطح میانی:</strong> افراد تیپ پنج بسیار کنجکاوند و می‌خواهند بدانند به طور کلی آنچه مشاهده می‌کنند، چگونه است. در واقع چون خیلی به توانایی خود برای انجام کار مطمئن نیستند، به دنیای درون روی می‌آورند. زیرا می‌دانند در این زمینه قادر و توانا هستند. افراد این تیپ در حالی‌ که برای حفظ داشته‌های خود آزمندند، خساست هم دارند. این افراد نیاز به استقلال دارند و برای اینکه نیازهای محدود خود را حفظ کنند و کمتر به زحمت بیافتند، به خساست و استفاده مطلوب از منابع محدود خود گرفتار می‌شوند. به دلیل پس‌زدن جهان پیرامون، بیشتر دوست دارند با خود تنها باشند و به کسب دانش و انرژی بپردازند.</li>
-                        <li><strong>در سطح متعادل:</strong> آن‌ها در این سطح، یک دانشنامه تجربی متحرکند. دارای ذهن تحلیل‌گر بسیار قوی هستند و قادرند محیط اطراف را با ذکاوت و باریک‌بینی خاصی مشاهده کنند. برای دستیابی به اطلاعات و دانش مورد نظرشان، قدرت تمرکز و پشتکار بسیاری دارند. علاوه بر دانشی که دارند، عملگرا نیز هستند و از آن در عمل استفاده می‌کنند و به این ترتیب خرد به دست می‌آورند. انسان‌هایی حساس هستند و راه و روش‌های کاملا جدید و نوینی برای انجام دادن کارها و درک و فهم عمیق موضوعات دارند. واقع‌گرایی در آن‌ها بالا است و خیال‌پردازی ندارند. درک‌شان از محیط پیرامون بسیار خوب است. مشاهده‌گر صادقی هستند که رویدادها و چیزها را همان‌طور که هست می‌بینند.</li>
-                        <li><strong>در سطح نامتعادل:</strong> افراد این تیپ از واقعیت‌های محیط و روابط اجتماعی فاصله زیادی می‌گیرند. از نظر روحی و روانی، انسان‌های پایداری نیستند. منفی‌گرایی شدید و افسردگی در آن‌ها مشهود است. اگرچه از خشونت دیگران واهمه دارند، خودشان انسان‌های بسیار خشنی هستند. از ایده‌ها و وسوسه‌های ذهنی خود وحشت دارند و این وحشت از خود، باعث می‌شود که دچار آشوب و اختلال حواس شوند. یک نوع نخوت روشنفکرانه دارند و بیشتر تلاش دارند به بقیه بگوینند که خیلی چیزها می‌دانند. گوشه‌گیر و منزوی می‌شوند. احساسات خود را مهار و خودشان را از واقعیت و زندگی جاری دور می‌کنند و از همه چیز و همه کس جدا می‌افتند.</li>
-                    </ul>
-                    <h3>جملات مرتبط با توسعه سطوح تیپ ۵</h3>
-                    <ul>
-                        <li><strong>پیام دوران کودکی (کلام شکل‌دهنده تیپ):</strong> "این خوب نیست که چیزی را ندانی."</li>
-                        <li><strong>پیام تعدیل‌کننده تیپ:</strong> "توانایی‌های تو کافیست."</li>
-                        <li><strong>ترس بنیادی:</strong> بی‌کفایتی و ندانستن.</li>
-                        <li><strong>رفتار در زمان فعال شدن ترس (منیت):</strong> ناخن‌خشکی.</li>
-                        <li><strong>تجربه درونی در زمان فعال شدن ترس (هوای نفس):</strong> آزمندی.</li>
-                        <li><strong>هدیه تولد:</strong> یادگیری (در سطوح متعادل به شکل خرد ابراز می‌شود).</li>
-                        <li><strong>ابراز ناآگاهانه آن:</strong> جمع‌آوری دانش‌های پراکنده.</li>
-                        <li><strong>اجتناب از:</strong> نادانی.</li>
-                        <li><strong>حل کردن تضاد با:</strong> تجزیه و تحلیل.</li>
-                        <li><strong>شکایت پنهانی:</strong> "من آنقدر باهوشم که هیچ‌کس نمی‌تواند مرا درک کند."</li>
-                        <li><strong>انگاشت نوپدید (در سطوح متعادل):</strong> "قدردانم که خرد جاری در هستی را دریافت می‌کنم و هر لحظه به بهترین شکل بودنم هدایت می‌شوم."</li>
-                    </ul>
-                </div>
-            </section>
-            
-            <!-- Type 6 Card -->
-            <section class="card" id="type-6">
-                <h2>تیپ ۶: پشتیبان (The Loyalist)</h2>
-                <div class="content">
-                    <h3>شرح تیپ ۶</h3>
-                    <ul>
-                        <li><strong>فضای کودکی:</strong> بزرگ‌ترین ترس این افراد در کودکی، نداشتن حامی و تکیه‌گاه است. آن‌ها به دلیل حمایت ناکافی یا سخت‌گیری والدین، حس عدم امنیت و ترس از اعتماد کردن به دیگران را دارند. این حس باعث می‌شود که به دنبال یک حامی یا سیستم امنیتی بگردند.</li>
-                        <li><strong>چارچوب‌ها و جهان‌بینی:</strong> کلمات کلیدی تیپ شش، شک، ترس و بی‌اعتمادی است. آن‌ها آینده را نامشخص می‌بینند و تصویرهای وحشتناکی برای آن می‌سازند. برای کاهش اضطراب، به سازماندهی کارها و پیش‌بینی آینده روی می‌آورند. این افراد به دوستان، عقاید و سیستم‌ها بسیار وفادارند.</li>
-                    </ul>
-                    <h3>سطوح تیپ ۶</h3>
-                    <ul>
-                        <li><strong>در سطح میانی:</strong> به جای اینکه کاری را انجام دهد بیشتر در مورد آن فکر می‌کند و دلیلش این است که در انجام کارهایش ترس و تردید دارد. در تیپ شش، گروهی هستند که به خاطر عدم فعالیت به شدت نگران می‌شوند ولی واکنش آن‌ها به این شرایط، روبرو شدن با ترس و جنگیدن است. در حالی که گروه دوم، کنار می‌کشند. آن‌ها آرزوهای بزرگی دارند ولی در انجام کارها تمام‌کننده نیستند و در نتیجه کارهای ناتمام زیادی دارند. موفقیت برای آن‌ها تهدیدآمیز است، زیرا تردید‌هایشان را بیشتر می‌کند. معمولا نقش فردی ضعیف را خوب بازی می‌کنند و در روابط خود با وفا می‌باشند.</li>
-                        <li><strong>در سطح متعادل:</strong> دوست داشتنی هستند و در ارتباطات خود بسیار وفادارند. در این حالت به دیگران اهمیت می‌دهند و به خودشان و دیگران اعتماد می‌کنند. دوستانی محبوب و خوش‌خو هستند که افراد، احساس گرم و محترمانه‌ای نسبت به آن‌ها دارند. در عین حال که با اطرافیان مشارکت و همزیستی دارند، استقلال خود را حفظ می‌کنند. خون‌گرم، معاشرتی و قادر به درک واکنش‌های احساسی دیگران هستند. بسیار جذاب، دوست داشتنی، محبوب و مهربان هستند. به دیگران اعتماد می‌کنند و با آن‌ها پیوند عاطفی دارند و روابط همیشگی همراه با اتحاد با آن‌ها برقرار می‌کنند.</li>
-                        <li><strong>در سطح نامتعادل:</strong> او از ترس اینکه امنیت و آسایش خویش را خراب نکند، همیشه هراسان و دست‌پاچه است. همیشه می‌خواهد مچ کسی را بگیرد. غیر قابل پیش‌بینی است و طوری رفتار می‌کند که بعضی وقت‌ها انگار اطرافیانش را نمی‌شناسد. تفرقه ایجاد می‌کند، فضایل دیگران را نادیده می‌گیرد و آن‌ها را تحقیر و سرزنش می‌کند. بدبینی زیادی دارد، مشکوک است و همیشه فکر می‌کند که کاسه‌ای زیر نیم کاسه است. به همه چیز واکنش شدید دارد، چون خود را بسیار ناتوان می‌پندارد و ناخودآگاه حالت‌های تهاجمی از خود بروز می‌دهد. احساس آزاردیدگی و اذیت شدن دارد و فکر می‌کند آن‌ها را از دیگران دریافت می‌کند.</li>
-                    </ul>
-                    <h3>جملات مرتبط با توسعه سطوح تیپ ۶</h3>
-                    <ul>
-                        <li><strong>پیام دوران کودکی (کلام شکل‌دهنده تیپ):</strong> "این خوب نیست که به خودت اطمینان کنی."</li>
-                        <li><strong>پیام تعدیل‌کننده تیپ:</strong> "تو همیشه خودت می‌توانی موضوع خود را حل کنی."</li>
-                        <li><strong>ترس بنیادی:</strong> ناامن بودن و حامی نداشتن.</li>
-                        <li><strong>رفتار در زمان فعال شدن ترس (منیت):</strong> بزدلی.</li>
-                        <li><strong>تجربه درونی در زمان فعال شدن ترس (هوای نفس):</strong> تشویش.</li>
-                        <li><strong>هدیه تولد:</strong> تیزبینی (در سطوح متعادل به شکل بصیرت ابراز می‌شود).</li>
-                        <li><strong>ابراز ناآگاهانه آن:</strong> موشکافی بیش از حد نسبت به موضوعات.</li>
-                        <li><strong>اجتناب از:</strong> عدم شفافیت.</li>                    <li><strong>حل کردن تضاد با:</strong> جستجو و تجسس.</li>
-                        <li><strong>شکایت پنهانی:</strong> "من همیشه وظیفه خود را انجام می‌دهم و می‌توان به من اعتماد کرد ولی دیگران این‌گونه نیستند."</li>
-                        <li><strong>انگاشت نوپدید (در سطوح متعادل):</strong> "قدردانم که هستی با سخاوتمنـدی حمایتم می‌کند و همیشـه در امانم چرا که ذات ط‌ـبیعت, فناناپذیر است."</li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Type 7 Card -->
-            <section class="card" id="type-7">
-                <h2>تیپ ۷: پرشور (The Enthusiast)</h2>
-                <div class="content">
-                    <h3>شرح تیپ ۷</h3>
-                    <ul>
-                        <li><strong>فضای کودکی:</strong> این افراد در دوران کودکی احساس گسستگی و محرومیت عاطفی از مادر داشته‌اند. برای فرار از این احساسات، تصمیم گرفته‌اند به جای غم و رنج، به دنبال لذت‌ها و تجربه‌های جدید بروند. آن‌ها با استفاده از تخیل فعال خود، برنامه‌های زیادی برای آینده دارند.</li>
-                        <li><strong>چارچوب‌ها و جهان‌بینی:</strong> تیپ هفت با محدود کردن خود مشکل دارد و به هر چیزی که فکر می‌کند، بدون تعمق عمل می‌کند. آن‌ها احساس توخالی بودن دارند و سعی می‌کنند با داشتن تجربه‌های زیاد این کمبود را جبران کنند. کلمات کلیدی آن‌ها لذت‌جویی و خیال‌پردازی است.</li>
-                    </ul>
-                    <h3>سطوح تیپ ۷</h3>
-                    <ul>
-                        <li><strong>در سطح میانی:</strong> او دوست دارد آزاد زندگی کند و محدودیتی نداشته باشد، تا بتواند به دنبال لذت‌های خود از زندگی باشد. چون هدفش از کار و فعالیت، لذت‌جویی است، بسیاری از مواقع در نیمه‌های کار آن را رها می‌کند. همیشه لذت‌های ذهنی برای خودش ایجاد می‌کند و این لذت‌های ذهنی با آینده‌نگری و خیال‌پردازی همراه است. در نتیجه وقتی چیزی را خیال می‌کند و به مرحله ایده در‌می‌آورد، می‌خواهد همان را به واقعیت تبدیل کند. به دلیل لذت‌جویی زیاد، به خود توجه دارد و نمی‌تواند دیگران را درک کند. اعتماد‌ به‌ نفس بالایی دارد و فکر می‌کند دارای توان بالایی است. از این رو افراد این تیپ معمولا از‌ خود‌راضی و خود‌شیفته هستند.</li>
-                        <li><strong>در سطح متعادل:</strong> انسان‌هایی مسئول و آزاد‌منش هستند. در مورد تجربه‌های خود بسیار پرشور و شوق می‌باشند. افرادی کنجاو، جست‌وجوگر و پیشرو هستند. آن‌ها انسان‌هایی تمام‌کننده، با استعدادهای گوناگون، پربار و عملگرا هستند. همچنین آدم‌هایی خوش‌برخورد و شوخ‌طبع هستند. ضمن این که برون‌گرا، شاد و سرزنده‌اند، زمان‌هایی را به خلوت و تنهایی با خود می‌گذرانند. خودانگیخته، خود‌جوش و مشتاق هستند و با تمام وجود، زندگی را تجربه می‌کنند. قدرت تخیلی قوی دارند و نوآور هستند. ایده‌های خود را انجام می‌دهند و به نتیجه می‌رسانند. آن‌ها بابت فرصت‌ها و موهبت‌هایی که دارند شامل امکانات و روابط خود قدر‌دان و سپاس‌گزارند.</li>
-                        <li><strong>در سطح نامتعادل:</strong> افراد تیپ هفت در مرحله ناسالم رشد خود، به آسانی و خیلی زود واکنش نشان می‌دهند. از تسکین و فرونشاندن نگرانی‌های خود ناامید و خسته می‌شوند. بدون انگیزه و فکر قبلی و بسیار بچه‌گانه عمل می‌کنند و خود‌شیفته‌اند. نمی‌دانند چه وقت باید دست از کارهایی که خواهان و مشغول آن هستند، بکشند. برای همین به آن‌ها معتاد می‌شوند و خسارات و هزینه‌های سنگینی را بابت آن پرداخت می‌کنند. از هم گسیخته می‌شوند و در مسیر سقوط قرار می‌گیرند. پر‌توقع، بی‌تربیت، خشن، گستاخ و بد‌‌زبان می‌شوند و ناسزا می‌گویند و رفتارهای توهین‌آمیز دارند. بی‌عاطفه می‌شوند و به خوبی می‌توانند با خشونت و رفتار غضبناک، دیگران را تحقیر کنند و به آن‌ها زور بگویند.</li>
-                    </ul>
-                    <h3>جملات مرتبط با توسعه سطوح تیپ ۷</h3>
-                    <ul>
-                        <li><strong>پیام دوران کودکی (کلام شکل‌دهنده تیپ):</strong> "این خوب نیست که همیشه دنبال خوش‌گذرانی باشی."</li>
-                        <li><strong>پیام تعدیل‌کننده تیپ:</strong> "تو لایق شاد بودن و تفریح‌ کردن هستی."</li>
-                        <li><strong>ترس بنیادی:</strong> محروم شدن و بدون امکانات بودن.</li>
-                        <li><strong>رفتار در زمان فعال شدن ترس (منیت):</strong> آینده‌بازی.</li>
-                        <li><strong>تجربه درونی در زمان فعال شدن ترس (هوای نفس):</strong> تنوع‌طلبی.</li>
-                        <li><strong>هدیه تولد:</strong> ایده‌پردازی (در سطوح متعادل به شکل نوآوری ابراز می‌شود).</li>
-                        <li><strong>ابراز ناآگاهانه آن:</strong> خیال‌پردازی و سیر در آینده.</li>
-                        <li><strong>اجتناب از:</strong> درد و رنج.</li>
-                        <li><strong>حل کردن تضاد با:</strong> خوش‌بینی و بی‌توجهی.</li>
-                        <li><strong>شکایت پنهانی:</strong> "من شاد هستم و اگر دیگران آن ‌چیزهایی را که می‌خواهم به من بدهند، شادتر هم می‌شوم."</li>
-                        <li><strong>انگاشت نوپدید (در سطوح متعادل):</strong> "قدردانم که هستی غنی و بی‌پایان است و این‌‌چنین است که مملو از فرصت‌های بی‌پایان و لذایذ ناب هستم."</li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Type 8 Card -->
-            <section class="card" id="type-8">
-                <h2>تیپ ۸: رهبر (The Leader)</h2>
-                <div class="content">
-                    <h3>شرح تیپ ۸</h3>
-                    <ul>
-                        <li><strong>فضای کودکی:</strong> بیشتر افراد تیپ هشت در دوران کودکی، این احساس را داشته‌اند که باید مانند یک فرد بالغ رفتار کنند و در نتیجه مسئولیت‌های خانوادگی متعددی به عهده گرفته‌اند. برخی از افراد این گروه از سنین کودکی احساس بلوغ و بزرگی می‌کنند، چون از لحاظ مالی یا در جایگاه والد، برای حفاظت و رشد دیگر افراد یا فرزندان خانواده، مسئول کمک به خانواده می‌شوند. شاید پدر خانواده به دلایل فیزیکی یا دلایل دیگر غایب یا خانواده درگیر بلایای دیگری باشد.</li>
-                        <li><strong>چارچوب‌ها و جهان‌بینی:</strong> همانند تیپ چهار، تیپ هشت نیز معتقد است که چیزی در زندگی‌اش کم است. ولی بر عکس تیپ چهار، این تیپ با این کمبود برخورد و سعی می‌کند شرایط را برای تامین این کمبود در کنترل خود درآورد. آن‌ها معتقدند شرایطی که به وجود می‌آید و بی‌عدالتی که گسترش پیدا می‌کند، مسبب و عواملی دارد. از این نظر خشم دارند و معتقد هستند که خداوند در مورد آن‌ها کم گذاشته است.</li>
-                    </ul>
-                    <h3>سطوح تیپ ۸</h3>
-                    <ul>
-                        <li><strong>در سطح میانی:</strong> احتمالا این تیپ در خردسالی شاهد از بین رفتن معصومیت و ایجاد نابرابری و ظلم بوده است. بنابراین خشم فروخورده‌ای در وجودش است و تثبیت قدرت شخصی خود را به اشتباه، حمایت و دفاع از خود و دیگران قلمداد می‌کند. به عقیده و نظر دیگران اعتماد ندارد و معمولا می‌گوید "راه من یا راه هیچ‌کس". به دلیل داشتن فکر همه یا هیچ، در خود هیچ نقطه ضعفی نمی‌بیند و در جهت حمایت از خود و دیگران تا جایی‌ که لازم است، اعمال قدرت می‌کند.</li>
-                        <li><strong>در سطح متعادل:</strong> آن‌ها به خودشان متکی هستند و استقلال مالی دارند. خوددار و سخاوتمند هستند و صراحت لهجه بالایی دارند. شجاع هستند و در مواجهه با خطرات، بسیار توانا برخورد می‌کنند. اهل عمل، دارای انگیزه‌های قوی درونی و راسخ هستند. چالش‌های زندگی را دوست دارند و به طور طبیعی پیشرو، پیش‌کسوت و رهبر هستند و در اجرای کارهای در دست انجام، مهارت و توانایی بسیاری از خود نشان می‌دهند. برای هر آنچه می‌خواهند و نیاز دارند، ایستادگی می‌کنند.</li>
-                        <li><strong>در سطح نامتعادل:</strong> افراد تیپ هشت در سطح نامتعادل، احساس می‌کنند به آن‌ها خیانت شده است. فکر می‌کنند که آنان بالاتر از قانون هستند و برای همین قوانین را محترم نمی‌شمارند. در این مرحله، بروز احساسات و عواطف در آن‌ها نا‌محسوس می‌شود و می‌توانند به شدت هرگونه احساس دیگر خود را مانند غضب, گناه, ترس, شرم یا ناتوانی, در خود پنهان کنند. اگر در معرض خطر قرار بگیرند, از هیچ تلاشی برای کنترل دیگران چشم‌پوشی نمی‌کنند و به طرز وحشیانه‌ای دمار از روزگار دیگران در می‌آورند.</li>
-                    </ul>
-                    <h3>جملات مرتبط با توسعه سطوح تیپ ۸</h3>
-                    <ul>
-                        <li><strong>پیام دوران کودکی (کلام شکل‌دهنده تیپ):</strong> "این خوب نیست که ضعیف و آسیب‌پذیر باشی."</li>
-                        <li><strong>پیام تعدیل‌کننده تیپ:</strong> "تو قوی هستی و در امانی."</li>
-                        <li><strong>ترس بنیادی:</strong> صدمه‌ دیدن، کنترل‌ شدن یا ضعیف بودن.</li>
-                        <li><strong>رفتار در زمان فعال شدن ترس (منیت):</strong> تلافی‌جویی.</li>
-                        <li><strong>تجربه درونی در زمان فعال شدن ترس (هوای نفس):</strong> زیاده‌خواهی.</li>
-                        <li><strong>هدیه تولد:</strong> قدرت (در سطوح متعادل به شکل کاریزما ابراز می‌شود).</li>
-                        <li><strong>ابراز ناآگاهانه آن:</strong> جنگ و جدل و کنترل کردن.</li>
-                        <li><strong>اجتناب از:</strong> ناتوانی و ضعف.</li>
-                        <li><strong>حل کردن تضاد با:</strong> مواجهه و ممارست.</li>
-                        <li><strong>شکایت پنهانی:</strong> "من مبارزه می‌کنم و برای حفظ امنیت خود و نزدیکانم اجازه نمی‌دهم دیگران از من سو‌ء استفاده کنند."</li>
-                        <li><strong>انگاشت نوپدید (در سطوح متعادل):</strong> "قدردانم که هستی قادر مطلق و جاودانه است و این‌گونه است که لبریز از قدرت و زندگی جاودانه‌ هستم."</li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Type 9 Card -->
-            <section class="card" id="type-9">
-                <h2>تیپ ۹: صلح‌طلب (The Peacemaker)</h2>
-                <div class="content">
-                    <h3>شرح تیپ ۹</h3>
-                    <ul>
-                        <li><strong>فضای کودکی:</strong> در میان تیپ‌های شخصیتی، تیپ سه به ارتباط نزدیک با مادر، تیپ شش بیشتر به ارتباط نزدیک با پدر و تیپ نه به هر دو نیاز دارد. افراد تیپ نه در دوران کودکی مایلند با پدر و مادر، هر دو، ارتباط نزدیکی داشته باشند و در این تمایل کاملا غرق می‌شوند و می‌خواهند این ارتباط نزدیک را به طور مداوم تجربه کنند. اغلب افراد این گروه، کودکی بسیار خوب و شادی داشته‌اند که به دلایلی ادامه‌دار نبوده و در مقطعی از زمان قطع شده است.</li>
-                        <li><strong>چارچوب‌ها و جهان‌بینی:</strong> تیپ نه با غرایز خود چندان در ارتباط نیست و بیشتر از احساسات و اندیشه‌های خود برای ارتباط با دیگران و مواجهه با مشکلات بهره‌برداری می‌کند. انرژی غریزی این افراد بیشتر صرف ایجاد حد و مرزهایی می‌شود که وقایع ناراحت کننده را دور نگه می‌دارد. ترس تیپ شخصیتی نه، جدایی و از هم‌گسیختگی است. تمایل اصلی آن‌ها برقراری صلح و خیال آسوده است.</li>
-                    </ul>
-                    <h3>سطوح تیپ ۹</h3>
-                    <ul>
-                        <li><strong>در سطح میانی:</strong> افراد با خصوصیات تیپ شخصیتی نه، آسان‌گیر و راحت هستند و از رویارویی و کشمکش دوری می‌کنند، برای همین گاهی بیش از حد با دیگران سازش دارند. آن‌ها نمی‌خواهند از دیگران آزار ببینند. این تیپ شخصیتی، به دنبال تداوم آرامش و راحتی خودش در گوشه امنیست که ساخته است. به دلیل سستی و تنبلی‌ای که دارد، گاهی در انجام کارهای خود ناتوان است و موضوعات اساسی زندگی‌اش همیشه با مشکل مواجه می‌شود. معمولا به موضوعات بدون اهمیت می‌پردازد و از نیازهای اصلی خود دور می‌ماند.</li>
-                        <li><strong>در سطح متعادل:</strong> افراد تیپ نه در این سطح، متانت و ثبات رفتاری دارند. با خود و دیگران روراست و قابل اعتماد هستند و اندیشه‌های خود را مستقیم بیان می‌کنند. واقع‌بینی به خوبی در آن‌ها نمایان است. در حضور آن‌ها مردم احساس آرامش و همبستگی می‌کنند. وقتی لازم باشد بسیار راسخ و قدرتمند و پایدارند که این خصوصیات آن‌ها باعث می‌شود اعتماد و اطمینان دیگران را جلب کنند. به همین دلیل می‌توانند مشاور، میانجی‌، صلح‌آفرین و داورهای موثری باشند.</li>
-                        <li><strong>در سطح نامتعادل:</strong> در سطح نامتعادل، خشم و غضب انباشته شده آن‌ها منفجر می‌شود. در این حالت قدرت تشخیص و قضاوت آن‌ها بسیار ضعیف است و نامعقول هستند. خیلی وقت‌ها مات و مبهوت هستند و نمی‌دانند چه شده است. علت آن این است که نمی‌خواهند با واقعیت روبرو شوند. در مقابل وقایع اطراف خود، حالتی بی‌تفاوت دارند و همیشه فراموش‌کارند. آن‌ها دچار وسواس این هستند که همه با هم خوب باشند و برای همین از همه چیز کنار می‌کشند و در پیله خود فرو می‌روند و یک حالت بی‌حسی و بی‌تفاوتی به خود می‌گیرند.</li>
-                    </ul>
-                    <h3>جملات مرتبط با توسعه سطوح تیپ ۹</h3>
-                    <ul>
-                        <li><strong>پیام دوران کودکی (کلام شکل‌دهنده تیپ):</strong> "این خوب نیست که روی تضادها پافشاری کنی."</li>
-                        <li><strong>پیام تعدیل‌کننده تیپ:</strong> "تو در آرامش هم توانایی مواجهه با تضادها را داری."</li>
-                        <li><strong>ترس بنیادی:</strong> تنها ماندن و از دست دادن رابطه.</li>
-                        <li><strong>رفتار در زمان فعال شدن ترس (منیت):</strong> ساده‌گیری.</li>
-                        <li><strong>تجربه درونی در زمان فعال شدن ترس (هوای نفس):</strong> رخوت و تنبلی.</li>
-                        <li><strong>هدیه تولد:</strong> انعطاف (در سطوح متعادل به شکل صلح ابراز می‌شود).</li>
-                        <li><strong>ابراز ناآگاهانه آن:</strong> مسامحه، نادیده‌انگاری و سازش.</li>
-                        <li><strong>اجتناب از:</strong> تضاد و درگیری.</li>
-                        <li><strong>حل کردن تضاد با:</strong> سازگاری با شرایط.</li>
-                        <li><strong>شکایت پنهانی:</strong> "من از شرایط موجود هر طور که باشد راضی و خرسندم، دیگران به من فشار می‌آورند که تغییر کنم."</li>
-                        <li><strong>انگاشت نوپدید (در سطوح متعادل):</strong> "قدردانم که در این‌چــنین جـهانی می‌زیم و از این روی سرشار و جوشان از صلحی ابدی و تـمام نشدنـی هستم."</li>
-                    </ul>
-                </div>
-            </section>
-        </main>
-    </div>
+        <!-- Type 9 Card -->
+        <div class="type-card" id="type-9">
+            <h2>تیپ ۹: صلح‌طلب (The Peacemaker)</h2>
+            <div class="content">
+                <h3>شرح تیپ ۹</h3>
+                <ul>
+                    <li><strong>فضای کودکی:</strong> در میان تیپ‌های شخصیتی، تیپ سه به ارتباط نزدیک با مادر، تیپ شش بیشتر به ارتباط نزدیک با پدر و تیپ نه به هر دو نیاز دارد. افراد تیپ نه در دوران کودکی مایلند با پدر و مادر، هر دو، ارتباط نزدیکی داشته باشند و در این تمایل کاملا غرق می‌شوند و می‌خواهند این ارتباط نزدیک را به طور مداوم تجربه کنند. اغلب افراد این گروه، کودکی بسیار خوب و شادی داشته‌اند که به دلایلی ادامه‌دار نبوده و در مقطعی از زمان قطع شده است.</li>
+                    <li><strong>چارچوب‌ها و جهان‌بینی:</strong> تیپ نه با غرایز خود چندان در ارتباط نیست و بیشتر از احساسات و اندیشه‌های خود برای ارتباط با دیگران و مواجهه با مشکلات بهره‌برداری می‌کند. انرژی غریزی این افراد بیشتر صرف ایجاد حد و مرزهایی می‌شود که وقایع ناراحت کننده را دور نگه می‌دارد. ترس تیپ شخصیتی نه، جدایی و از هم‌گسیختگی است. تمایل اصلی آن‌ها برقراری صلح و خیال آسوده است.</li>
+                </ul>
+                <h3>سطوح تیپ ۹</h3>
+                <ul>
+                    <li><strong>در سطح میانی:</strong> افراد با خصوصیات تیپ شخصیتی نه، آسان‌گیر و راحت هستند و از رویارویی و کشمکش دوری می‌کنند، برای همین گاهی بیش از حد با دیگران سازش دارند. آن‌ها نمی‌خواهند از دیگران آزار ببینند. این تیپ شخصیتی، به دنبال تداوم آرامش و راحتی خودش در گوشه امنیست که ساخته است. به دلیل سستی و تنبلی‌ای که دارد، گاهی در انجام کارهای خود ناتوان است و موضوعات اساسی زندگی‌اش همیشه با مشکل مواجه می‌شود. معمولا به موضوعات بدون اهمیت می‌پردازد و از نیازهای اصلی خود دور می‌ماند.</li>
+                    <li><strong>در سطح متعادل:</strong> افراد تیپ نه در این سطح، متانت و ثبات رفتاری دارند. با خود و دیگران روراست و قابل اعتماد هستند و اندیشه‌های خود را مستقیم بیان می‌کنند. واقع‌بینی به خوبی در آن‌ها نمایان است. در حضور آن‌ها مردم احساس آرامش و همبستگی می‌کنند. وقتی لازم باشد بسیار راسخ و قدرتمند و پایدارند که این خصوصیات آن‌ها باعث می‌شود اعتماد و اطمینان دیگران را جلب کنند. به همین دلیل می‌توانند مشاور، میانجی‌، صلح‌آفرین و داورهای موثری باشند.</li>
+                    <li><strong>در سطح نامتعادل:</strong> در سطح نامتعادل، خشم و غضب انباشته شده آن‌ها منفجر می‌شود. در این حالت قدرت تشخیص و قضاوت آن‌ها بسیار ضعیف است و نامعقول هستند. خیلی وقت‌ها مات و مبهوت هستند و نمی‌دانند چه شده است. علت آن این است که نمی‌خواهند با واقعیت روبرو شوند. در مقابل وقایع اطراف خود، حالتی بی‌تفاوت دارند و همیشه فراموش‌کارند. آن‌ها دچار وسواس این هستند که همه با هم خوب باشند و برای همین از همه چیز کنار می‌کشند و در پیله خود فرو می‌روند و یک حالت بی‌حسی و بی‌تفاوتی به خود می‌گیرند.</li>
+                </ul>
+                <h3>جملات مرتبط با توسعه سطوح تیپ ۹</h3>
+                <ul>
+                    <li><strong>پیام دوران کودکی (کلام شکل‌دهنده تیپ):</strong> "این خوب نیست که روی تضادها پافشاری کنی."</li>
+                    <li><strong>پیام تعدیل‌کننده تیپ:</strong> "تو در آرامش هم توانایی مواجهه با تضادها را داری."</li>
+                    <li><strong>ترس بنیادی:</strong> تنها ماندن و از دست دادن رابطه.</li>
+                    <li><strong>رفتار در زمان فعال شدن ترس (منیت):</strong> ساده‌گیری.</li>
+                    <li><strong>تجربه درونی در زمان فعال شدن ترس (هوای نفس):</strong> رخوت و تنبلی.</li>
+                    <li><strong>هدیه تولد:</strong> انعطاف (در سطوح متعادل به شکل صلح ابراز می‌شود).</li>
+                    <li><strong>ابراز ناآگاهانه آن:</strong> مسامحه، نادیده‌انگاری و سازش.</li>
+                    <li><strong>اجتناب از:</strong> تضاد و درگیری.</li>
+                    <li><strong>حل کردن تضاد با:</strong> سازگاری با شرایط.</li>
+                    <li><strong>شکایت پنهانی:</strong> "من از شرایط موجود هر طور که باشد راضی و خرسندم، دیگران به من فشار می‌آورند که تغییر کنم."</li>
+                    <li><strong>انگاشت نوپدید (در سطوح متعادل):</strong> "قدردانم که در این‌چــنین جـهانی می‌زیم و از این روی سرشار و جوشان از صلحی ابدی و تـمام نشدنـی هستم."</li>
+                </ul>
+            </div>
+        </div>
+    </main>
 
     <script>
-        // ---- Utils: Normalization for Persian/Arabic text & digits ----
-        const normalize = (s = '') => s
-            .toString()
-            .replace(/[\u064A\u06CC]/g, 'ی')       // Arabic/Persian Yeh
-            .replace(/[\u0643\u06A9]/g, 'ک')       // Arabic/Persian Kaf
-            .replace(/[\u200c\u200f\u200e]/g, ' ') // ZWNJ & LRM/RLM → space
-            .replace(/ـ+/g, '')                    // Tatweel
-            .replace(/[0-9]/g, d => '۰۱۲۳۴۵۶۷۸۹'[+d]) // Western → Persian
-            .replace(/[\u0660-\u0669]/g, d => '۰۱۲۳۴۵۶۷۸۹'[d.charCodeAt(0) - 0x0660]) // Arabic → Persian
-            .replace(/\s+/g, ' ')                // collapse spaces
-            .trim()
-            .toLowerCase();
-
-        // ---- Highlighting ----
-        const clearHighlights = (root = document) => {
-            root.querySelectorAll('mark.__hit').forEach(m => {
-                const parent = m.parentNode;
-                m.replaceWith(m.textContent);
+        /**
+         * Removes all existing highlight spans from the document.
+         */
+        function removeHighlights() {
+            const highlightedElements = document.querySelectorAll('.highlight');
+            highlightedElements.forEach(span => {
+                const parent = span.parentNode;
+                // Replace the span with its text content
+                parent.replaceChild(document.createTextNode(span.textContent), span);
+                // Merge adjacent text nodes to clean up the DOM
                 parent.normalize();
             });
-        };
-
-        function highlightInNode(node, needle) {
-            if (!needle) return 0;
-            let hits = 0;
-            const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT, {
-                acceptNode(n) {
-                    if (!n.nodeValue || !n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
-                    return NodeFilter.FILTER_ACCEPT;
-                }
-            });
-            const chunks = [];
-            const nNeedle = normalize(needle);
-            while (walker.nextNode()) {
-                const t = walker.currentNode;
-                const nText = normalize(t.nodeValue);
-                const idx = nText.indexOf(nNeedle);
-                if (idx > -1) {
-                    chunks.push({ t, idx, len: nNeedle.length });
-                }
-            }
-            chunks.reverse().forEach(({ t, idx, len }) => {
-                const orig = t.nodeValue; // approximate index using plain string walk
-                // naive approach: map by length from start ignoring normalization transforms (good enough for most Persian text here)
-                const before = document.createTextNode(orig.slice(0, idx));
-                const mark = document.createElement('mark');
-                mark.className = '__hit';
-                mark.textContent = orig.slice(idx, idx + len);
-                const after = document.createTextNode(orig.slice(idx + len));
-                const span = document.createDocumentFragment();
-                span.appendChild(before);
-                span.appendChild(mark);
-                span.appendChild(after);
-                t.parentNode.replaceChild(span, t);
-                hits++;
-            });
-            return hits;
         }
 
-        // ---- Search ----
-        const q = document.getElementById('q');
-        const btnSearch = document.getElementById('btnSearch');
-        const resultsEl = document.getElementById('results');
-        const cards = [...document.querySelectorAll('.card')];
+        /**
+         * Highlights all occurrences of a search term within a given HTML element.
+         * @param {HTMLElement} element The element to search within.
+         * @param {string} searchTerm The term to highlight.
+         */
+        function highlightText(element, searchTerm) {
+            // Create a regular expression for the search term
+            // 'gi' for global (all occurrences) and case-insensitive
+            const regex = new RegExp(`(${searchTerm})`, 'gi');
+            let nodesToProcess = [];
 
-        function doSearch() {
-            const term = q.value.trim();
-            clearHighlights();
-            resultsEl.textContent = '';
-            if (!term) {
-                resultsEl.textContent = 'عبارتی وارد کنید.';
+            // Recursively collect all text nodes within the element
+            function collectTextNodes(node) {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    // Only add text nodes that are not inside a script or style tag
+                    if (node.parentNode.nodeName !== 'SCRIPT' && node.parentNode.nodeName !== 'STYLE') {
+                        nodesToProcess.push(node);
+                    }
+                } else {
+                    for (let i = 0; i < node.childNodes.length; i++) {
+                        collectTextNodes(node.childNodes[i]);
+                    }
+                }
+            }
+            collectTextNodes(element);
+
+            // Process each collected text node
+            nodesToProcess.forEach(textNode => {
+                const parent = textNode.parentNode;
+                const text = textNode.nodeValue;
+                // Check if the text node contains the search term
+                if (regex.test(text)) {
+                    const fragment = document.createDocumentFragment();
+                    let lastIndex = 0;
+
+                    // Use replace to find all matches and build the new content
+                    text.replace(regex, (match, p1, offset) => {
+                        // Add the text before the current match
+                        if (offset > lastIndex) {
+                            fragment.appendChild(document.createTextNode(text.substring(lastIndex, offset)));
+                        }
+
+                        // Create a span for the highlighted text
+                        const span = document.createElement('span');
+                        span.className = 'highlight'; // Assign the highlight class
+                        span.textContent = match;
+                        fragment.appendChild(span);
+
+                        lastIndex = offset + match.length;
+                        return match; // Return the matched string to continue the replacement process
+                    });
+
+                    // Add any remaining text after the last match
+                    if (lastIndex < text.length) {
+                        fragment.appendChild(document.createTextNode(text.substring(lastIndex)));
+                    }
+
+                    // Replace the original text node with the new fragment (containing text and highlight spans)
+                    parent.replaceChild(fragment, textNode);
+                }
+            });
+        }
+
+        /**
+         * Initiates the content search and highlighting process.
+         */
+        function searchContent() {
+            const searchTerm = document.getElementById('searchInput').value.trim(); // Trim whitespace
+            const typeCards = document.querySelectorAll('.type-card');
+
+            removeHighlights(); // Always remove previous highlights first
+
+            if (searchTerm === '') {
+                showMessageBox('لطفاً کلمه مورد نظر برای جستجو را وارد کنید.');
                 return;
             }
-            let total = 0;
-            let firstHitEl = null;
-            cards.forEach(card => {
-                const hits = highlightInNode(card.querySelector('.content'), term);
-                if (hits > 0) {
-                    card.dataset.hits = hits;
-                    if (!firstHitEl) firstHitEl = card;
-                } else {
-                    delete card.dataset.hits;
+
+            let found = false;
+            for (const card of typeCards) {
+                // Check if the card's text content includes the search term (case-insensitive)
+                if (card.textContent.toLowerCase().includes(searchTerm.toLowerCase())) {
+                    // Scroll to the found card
+                    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Highlight the text within this specific card
+                    highlightText(card, searchTerm);
+                    found = true;
+                    break; // Stop after finding and highlighting the first match
                 }
-            });
-            total = document.querySelectorAll('mark.__hit').length;
-            if (total === 0) {
-                resultsEl.textContent = `«${term}» یافت نشد.`;
-            } else {
-                resultsEl.textContent = `${total} مورد یافت شد.`;
-                firstHitEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
-            updateTocBadges();
+
+            if (!found) {
+                showMessageBox(`"${searchTerm}" در محتوا یافت نشد.`);
+            }
         }
 
-        btnSearch.addEventListener('click', doSearch);
-        q.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') doSearch();
-            if (e.key === 'Escape') {
-                q.value = '';
-                clearHighlights();
-                resultsEl.textContent = 'پاک شد.';
-                updateTocBadges();
-            }
-        });
-        document.getElementById('clearSearch').addEventListener('click', () => {
-            q.value = '';
-            clearHighlights();
-            resultsEl.textContent = '';
-            updateTocBadges();
-        });
+        /**
+         * Displays a custom message box instead of the browser's alert.
+         * @param {string} message The message to display.
+         */
+        function showMessageBox(message) {
+            const messageBox = document.createElement('div');
+            messageBox.style.position = 'fixed';
+            messageBox.style.top = '50%';
+            messageBox.style.left = '50%';
+            messageBox.style.transform = 'translate(-50%, -50%)';
+            messageBox.style.backgroundColor = '#fff';
+            messageBox.style.border = '2px solid #a62f2f';
+            messageBox.style.borderRadius = '10px';
+            messageBox.style.padding = '20px';
+            messageBox.style.zIndex = '2000';
+            messageBox.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
+            messageBox.style.textAlign = 'center';
+            messageBox.style.fontFamily = 'Vazirmatn, sans-serif';
+            messageBox.style.direction = 'rtl';
+            messageBox.style.maxWidth = '300px';
 
-        // ---- TOC badges for matches ----
-        function updateTocBadges() {
-            document.querySelectorAll('.toc a').forEach(a => {
-                const id = a.getAttribute('href').slice(1);
-                const card = document.getElementById(id);
-                a.dataset.count = card ? (card.querySelectorAll('mark.__hit').length || '') : '';
-                a.textContent = a.textContent.replace(/\s*\(\d+\)$/, '');
-                if (a.dataset.count) {
-                    a.textContent += ` (${a.dataset.count})`;
-                }
-            });
+            const messageText = document.createElement('p');
+            messageText.textContent = message;
+            messageText.style.marginBottom = '15px';
+            messageText.style.fontSize = '1.1rem';
+            messageText.style.color = '#333';
+
+            const closeButton = document.createElement('button');
+            closeButton.textContent = 'بستن';
+            closeButton.style.backgroundColor = '#a62f2f';
+            closeButton.style.color = '#fff';
+            closeButton.style.border = 'none';
+            closeButton.style.borderRadius = '5px';
+            closeButton.style.padding = '8px 15px';
+            closeButton.style.cursor = 'pointer';
+            closeButton.style.fontFamily = 'Vazirmatn, sans-serif';
+            closeButton.style.fontWeight = 'bold';
+            closeButton.onclick = () => document.body.removeChild(messageBox);
+
+            messageBox.appendChild(messageText);
+            messageBox.appendChild(closeButton);
+            document.body.appendChild(messageBox);
         }
-
-        // ---- Scrollspy ----
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                const id = entry.target.id;
-                const link = document.querySelector(`.toc a[href="#${id}"]`);
-                if (link) {
-                    link.classList.toggle('is-active', entry.isIntersecting);
-                }
-            });
-        }, { rootMargin: '-30% 0px -60% 0px', threshold: .1 });
-        cards.forEach(c => observer.observe(c));
-
-        // ---- Smooth in-page navigation ----
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', (e) => {
-                const id = a.getAttribute('href').slice(1);
-                const target = document.getElementById(id);
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-
-        // ---- Mobile drawer ----
-        const toggle = document.querySelector('.mobile-toggle');
-        const drawer = document.getElementById('drawer');
-        toggle?.addEventListener('click', () => {
-            const open = drawer.classList.toggle('is-open');
-            toggle.setAttribute('aria-expanded', open);
-        });
     </script>
 </body>
 </html>
